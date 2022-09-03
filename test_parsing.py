@@ -12,10 +12,10 @@ dealerships = {
     'Stream Auto Outlet': {
         'url': 'https://www.streamautooutlet.com/inventory?type=used',
         'pagination_url': 'https://www.streamautooutlet.com/inventory?type=used&pg=2',
-        'dealership_name': 'Irwin Automotive Group',
-        'address': '59 Bisson Avenue',
-        'zipcode': '03246',
-        'city': 'Laconia',
+        'dealership_name': 'Stream Auto Outlet',
+        'address': '324 W Merrick Rd',
+        'zipcode': '11580',
+        'city': 'Valley Stream',
         'state': 'NY'
     }
 }
@@ -55,7 +55,7 @@ if __name__ == '__main__':
             while (True):
                 response = requests.get(pagination_url, headers = headers)
                 soup_pagination = BeautifulSoup(response.text, "html.parser")
-                title = pi.clean_text_data(pi.parse_subsection_all(soup, 'h4', 'span', 'srp-vehicle-title'))
+                title = pi.clean_text_data(pi.parse_subsection_all(soup_pagination, 'h4', 'span', 'srp-vehicle-title'))
 
                 print(pagination_url)
                 if len(title) == 0:

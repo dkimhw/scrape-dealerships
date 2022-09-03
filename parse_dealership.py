@@ -20,7 +20,9 @@ def get_stream_auto_outlet_inventory_data(soup, dealership_info, url):
   models = [None] * valid_len_data
 
   # Prices
-  car_prices = [int(float(i)) for i in pi.parse_class_attr(soup, 'div', 'row srpVehicle hasVehicleInfo', 'data-price')]
+  car_prices =  pi.convert_to_numeric_type(
+    pi.parse_subsection(soup, 'div', 'span', 'columns medium-8', 'price-value right', 'get_text')
+  )
 
   # Misc car information
   results = pi.get_row_subsection_data(soup, ('div', 'medium-8 medium-pull-4 columns'), ('div', 'srp-vehicle-data'))
@@ -32,37 +34,47 @@ def get_stream_auto_outlet_inventory_data(soup, dealership_info, url):
           sub_data += el_data
       vehicle_data.append(sub_data)
 
-  exterior_color = []
-  interior_color = []
-  transmission = []
-  engine = []
-  drivetrain = []
-  vin = []
-  miles = []
+  vehicle_misc_info = {
+    'exterior_color': [],
+    'interior_color': [],
+    'transmission': [],
+    'engine': [],
+    'drivetrain': [],
+    'vin': [],
+    'mileage': []
+  }
+
 
   for i in range(len(vehicle_data)):
+    row = {}
     for col in vehicle_data[i]:
       if 'Ext. Color' in col:
-          cleaned_str = col.replace('Ext. Color: ', '')
-          exterior_color.append(cleaned_str)
+        cleaned_str = col.replace('Ext. Color: ', '')
+        row['exterior_color'] = cleaned_str
       elif 'Int. Color' in col:
-          cleaned_str = col.replace('Int. Color: ', '')
-          interior_color.append(cleaned_str)
+        cleaned_str = col.replace('Int. Color: ', '')
+        row['interior_color'] = cleaned_str
       elif 'Transmission' in col:
-          cleaned_str = col.replace('Transmission: ', '')
-          transmission.append(cleaned_str)
+        cleaned_str = col.replace('Transmission: ', '')
+        row['transmission'] = cleaned_str
       elif 'Mileage' in col:
-          cleaned_str = col.replace('Mileage: ', '').replace(',', '')
-          miles.append(int(cleaned_str))
+        cleaned_str = col.replace('Mileage: ', '').replace(',', '')
+        row['mileage'] = cleaned_str
       elif 'Drivetrain' in col:
-          cleaned_str = col.replace('Drivetrain: ', '')
-          drivetrain.append(cleaned_str)
+        cleaned_str = col.replace('Drivetrain: ', '')
+        row['drivetrain'] = cleaned_str
       elif 'Engine' in col:
-          cleaned_str = col.replace('Engine: ', '')
-          engine.append(cleaned_str)
+        cleaned_str = col.replace('Engine: ', '')
+        row['engine'] = cleaned_str
       elif 'VIN' in col:
-          cleaned_str = col.split(' ')[1].strip()
-          vin.append(cleaned_str)
+        cleaned_str = col.split(' ')[1].strip()
+        row['vin'] = cleaned_str
+    for key in ['exterior_color', 'interior_color', 'drivetrain', 'transmission', 'mileage', 'engine', 'vin']:
+      if key in row:
+          vehicle_misc_info[key].append(row[key])
+      else:
+          vehicle_misc_info[key].append(None)
+
 
 
   # Append all parsed data to cars_list
@@ -73,14 +85,14 @@ def get_stream_auto_outlet_inventory_data(soup, dealership_info, url):
   cars_dict['vehicle_type'] = vehicle_type
   cars_dict['model'] = models
   cars_dict['trim'] = trim
-  cars_dict['vehicle_mileage'] = miles
+  cars_dict['vehicle_mileage'] = vehicle_misc_info['mileage']
   cars_dict['price'] = car_prices
-  cars_dict['exterior_color'] = exterior_color
-  cars_dict['interior_color'] = interior_color
-  cars_dict['transmission'] = transmission
-  cars_dict['engine'] = engine
-  cars_dict['drivetrain'] = drivetrain
-  cars_dict['vin'] = vin
+  cars_dict['exterior_color'] = vehicle_misc_info['exterior_color']
+  cars_dict['interior_color'] = vehicle_misc_info['interior_color']
+  cars_dict['transmission'] = vehicle_misc_info['transmission']
+  cars_dict['engine'] = vehicle_misc_info['engine']
+  cars_dict['drivetrain'] =vehicle_misc_info['drivetrain']
+  cars_dict['vin'] = vehicle_misc_info['vin']
 
   # Check if data is valid
   is_valid = pi.data_length_validation(cars_dict, valid_len_data)
@@ -98,9 +110,6 @@ def get_stream_auto_outlet_inventory_data(soup, dealership_info, url):
     cars['dealership_state'] = dealership_info['state']
     cars['inventory_url'] = dealership_info['url']
     cars['scraped_date'] = datetime.now(tz = None)
-
-    # Make other changes
-    cars['model_trim'] = cars['model'] + ' ' + cars['trim']
 
     return cars
   else:
