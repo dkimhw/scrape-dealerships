@@ -13,6 +13,7 @@ class Car(scrapy.Item):
   model = scrapy.Field()
   trim = scrapy.Field()
   price = scrapy.Field()
+  mileage = scrapy.Field()
   vehicle_type = scrapy.Field()
   model_trim = scrapy.Field()
   vehicle_mileage = scrapy.Field()
