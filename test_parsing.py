@@ -1,5 +1,4 @@
 
-from curses.ascii import TAB
 import parse_inventory as pi
 import parse_dealership
 import requests
@@ -12,6 +11,7 @@ dealerships = {
     'Stream Auto Outlet': {
         'url': 'https://www.streamautooutlet.com/inventory?type=used',
         'pagination_url': 'https://www.streamautooutlet.com/inventory?type=used&pg=2',
+        'vehicle_detail_url': 'https://www.streamautooutlet.com/vehicle-details',
         'dealership_name': 'Stream Auto Outlet',
         'address': '324 W Merrick Rd',
         'zipcode': '11580',
@@ -41,7 +41,7 @@ if __name__ == '__main__':
             # Start with parsing the first inventory page
             response = requests.get(dealerships[key]['url'], headers = headers)
             soup = BeautifulSoup(response.text, "html.parser")
-            data = parse_dealership.get_stream_auto_outlet_inventory_data(soup, dealerships[key], dealerships[key]['url'])
+            data = parse_dealership.get_stream_auto_outlet_inventory_data(soup, dealerships[key], dealerships[key]['url'], headers)
 
             if 'error' in data.columns:
                 pi.add_data_to_sqlite3(DB_NAME, ERROR_TBL_NAME, data)
@@ -61,7 +61,7 @@ if __name__ == '__main__':
                 if len(title) == 0:
                     break
                 else:
-                    data = parse_dealership.get_stream_auto_outlet_inventory_data(soup_pagination, dealerships[key], pagination_url)
+                    data = parse_dealership.get_stream_auto_outlet_inventory_data(soup_pagination, dealerships[key], pagination_url, headers)
                     if 'error' in data.columns:
                         pi.add_data_to_sqlite3(DB_NAME, ERROR_TBL_NAME, data)
                     else:

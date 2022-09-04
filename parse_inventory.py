@@ -3,6 +3,8 @@ import numpy as np
 import re
 import sqlite3
 import datetime
+from bs4 import BeautifulSoup
+import requests
 
 
 ##########################################
@@ -417,17 +419,10 @@ def get_row_subsection_data(soup, row, section):
         example:
         The data you need to access is in <div class="column"> but you want to associate all of the columns per row (per card)
 
-        <div class="medium-8 medium-pull-4 columns">
+        <div class="row">
           <meta content="19UUB6F56MA006677" itemprop="serialNumber"/><div class="price"><span class="price-label left">Internet Special:</span><span class="price-value right"><span content="USD" itemprop="priceCurrency">$</span><span content="41990" itemprop="price"></span>41,990</span></div>
-          <!-- Prequal Navigator Checkout -->
-          <button class="capital-one-prequalification-button" data-client-token="d1468364-5fe4-4eed-a327-a68cd6966093" data-sales-price="41990" data-vehicle-image-url="https://content.homenetiol.com/640x480/4190ee1f718542faa7fc667da6913136.jpg" data-vin="19UUB6F56MA006677">Explore Financing</button>
-          <!-- Prequal Navigator Checkout --><br/> <a class="button expand financeTheCar" href="/automotive-credit-application">Finance The Car</a>
           <div class="reveal large" data-reveal="" id="popup_1246562388631204687c888" style="overflow: scroll;"><button aria-label="Close modal" class="close-button" data-close="" style="background: transparent !important;" type="button"><span aria-hidden="true">×</span></button>
           </div>
-          <div class="reveal large" data-reveal="" id="popup_1246562388631204687c8882" style="overflow: scroll;"><button aria-label="Close modal" class="close-button" data-close="" style="background: transparent !important;" type="button"><span aria-hidden="true">×</span></button>
-          </div>
-          <!-- IN-108770 : Copied and removed itemprop markup to fix Schema issues for SEO -->
-          <!-- <div class="medium-8 medium-pull-4 columns" itemprop="itemOffered" itemscope itemtype="http://schema.org/Product"> -->
           <div class="medium-8 medium-pull-4 columns">
             <div class="srp-vehicle-data">
               <div class="row small-up-2 medium-up-2 left-collapse">
@@ -446,3 +441,9 @@ def get_row_subsection_data(soup, row, section):
             vehicle_data.append(sub_el)
         results.append(vehicle_data)
     return results
+
+
+def get_vehicle_detail_html_page(url, headers):
+  response = requests.get(url, headers = headers)
+  vehicle_detail = BeautifulSoup(response.text, "html.parser")
+  return vehicle_detail

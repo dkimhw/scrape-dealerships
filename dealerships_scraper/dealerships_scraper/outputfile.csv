@@ -1,0 +1,62 @@
+make,model,price,title,trim,year
+Acura,ILX,27490,2021 Acura ILX Sedan w/Premium Package									,w/Premium Package,2021
+BMW,4 Series,34990,2020 BMW 4 Series 430i xDrive Coupe 									,430i xDrive,2020
+BMW,5 Series,33990,2019 BMW 5 Series 530i xDrive Sedan 									,530i xDrive,2019
+BMW,5 Series,33990,2019 BMW 5 Series 530i xDrive Sedan 									,530i xDrive,2019
+BMW,5 Series,17990,2013 BMW 5 Series 550i xDrive Sedan 									,550i xDrive,2013
+BMW,5 Series,33990,2019 BMW 5 Series 530i xDrive Sedan 									,530i xDrive,2019
+BMW,5 Series,57990,2021 BMW 5 Series 540i xDrive Sedan 									,540i xDrive,2021
+BMW,5 Series,41990,2019 BMW 5 Series 540i xDrive Sedan 									,540i xDrive,2019
+BMW,4 Series,22990,2015 BMW 4 Series 435i xDrive Coupe 									,435i xDrive,2015
+Audi,S6,9995,2010 Audi S6 Prestige Sedan 									,Prestige,2010
+BMW,3 Series,33490,2019 BMW 3 Series 330i xDrive Sedan 									,330i xDrive,2019
+Audi,SQ7,82990,2021 Audi SQ7 Premium Plus SUV 									,Premium Plus,2021
+BMW,3 Series,29990,2019 BMW 3 Series 330i xDrive Sedan 									,330i xDrive,2019
+BMW,3 Series,34990,2019 BMW 3 Series 330i xDrive Sedan 									,330i xDrive,2019
+Audi,S4,52490,2020 Audi S4 Premium Plus Sedan 									,Premium Plus,2020
+Audi,Q8,55990,2019 Audi Q8 Premium Plus SUV 									,Premium Plus,2019
+Audi,S5 Sportback,45990,2019 Audi S5 Sportback Premium Plus Hatchback 									,Premium Plus,2019
+Audi,Q7,36490,2018 Audi Q7 Premium SUV 									,Premium,2018
+Alfa Romeo,Giulia,30490,2020 Alfa Romeo Giulia Base Sedan 									,Base,2020
+Acura,TLX,37490,2021 Acura TLX FWD w/A-Spec Package									,w/A-Spec Package,2021
+Acura,TLX,41990,2021 Acura TLX SH-AWD w/A-Spec Package									,w/A-Spec Package,2021
+Acura,TLX,21990,2018 Acura TLX 2.4L FWD									,2.4L,2018
+Acura,TLX,30990,2020 Acura TLX 3.5L SH-AWD w/Technology Pkg									,w/Technology Pkg,2020
+Acura,TLX,24990,2020 Acura TLX 3.5L FWD									,3.5L V6,2020
+Acura,TLX,37490,2021 Acura TLX FWD w/Technology Package									,w/Technology Package,2021
+Acura,TLX,28990,2019 Acura TLX 3.5L SH-AWD w/Technology Pkg									,w/Technology Pkg,2019
+Acura,RDX,34490,2020 Acura RDX SH-AWD w/Technology Pkg									,w/Technology Pkg,2020
+Acura,MDX,37990,2020 Acura MDX SH-AWD 7-Passenger									,3.5L,2020
+Acura,MDX,39990,2020 Acura MDX SH-AWD 7-Passenger w/Technology Pkg									,w/Technology Pkg,2020
+Acura,ILX,22990,2020 Acura ILX Sedan									,Base,2020
+drivetrain,engine,exterior_color,interior_color,make,model,model_trim,price,title,transmission,trim,vehicle_mileage,vehicle_type,vin,year
+ FWD, Premium Unleaded I-4 2.4 L/144, Performance Red Pearl, Black,Acura,ILX,Acura ILX,27490,2021 Acura ILX Sedan w/Premium Package									, Automatic,w/Premium Package, 6078, Sedan,19UDE2F70MA011357,2021
+ AWD, Intercooled Turbo Premium Unleaded I-6 3.0 L/183, Carbon Black Metallic,,BMW,5 Series,BMW 5 Series,41990,2019 BMW 5 Series 540i xDrive Sedan 									, Automatic,540i xDrive, 36083, Sedan,WBAJE7C55KWW13881,2019
+ AWD, Intercooled Turbo Gas/Electric I-6 3.0 L/183, Bernina Grey Amber Effect Metallic, Black,BMW,5 Series,BMW 5 Series,57990,2021 BMW 5 Series 540i xDrive Sedan 									, Automatic,540i xDrive, 20966, Sedan,WBA73BJ04MWX00541,2021
+ AWD, Turbocharged Gas V8 4.4L/268, Alpine White, Black,BMW,5 Series,BMW 5 Series,17990,2013 BMW 5 Series 550i xDrive Sedan 									, Automatic,550i xDrive, 79933, Sedan,WBAFU9C52DDY72511,2013
+ AWD, Intercooled Turbo Premium Unleaded I-4 2.0 L/122, Dark Graphite Metallic, Black,BMW,5 Series,BMW 5 Series,33990,2019 BMW 5 Series 530i xDrive Sedan 									, Automatic,530i xDrive, 50814, Sedan,WBAJA7C52KWC77508,2019
+ AWD, Intercooled Turbo Premium Unleaded I-4 2.0 L/122, Black Sapphire Metallic, Black,BMW,5 Series,BMW 5 Series,33990,2019 BMW 5 Series 530i xDrive Sedan 									, Automatic,530i xDrive, 44576, Sedan,WBAJA7C57KWW13389,2019
+ AWD, Intercooled Turbo Premium Unleaded I-4 2.0 L/122, Mineral White Metallic, Tan,BMW,5 Series,BMW 5 Series,33990,2019 BMW 5 Series 530i xDrive Sedan 									, Automatic,530i xDrive, 46600, Sedan,WBAJA7C52KWW19732,2019
+ AWD, Intercooled Turbo Premium Unleaded I-4 2.0 L/122, Mineral Grey Metallic, Red,BMW,4 Series,BMW 4 Series,34990,2020 BMW 4 Series 430i xDrive Coupe 									, Automatic,430i xDrive, 30573, Coupe,WBA4W5C03LFH25599,2020
+ AWD, Intercooled Turbo Premium Unleaded I-6 3.0 L/182, Mineral Grey Metallic, Black,BMW,4 Series,BMW 4 Series,22990,2015 BMW 4 Series 435i xDrive Coupe 									, Automatic,435i xDrive, 75029, Coupe,WBA3R5C59FK372566,2015
+ AWD, Intercooled Turbo Premium Unleaded V-6 3.0 L/183, Daytona Gray Pearl Effect, Red,Audi,S4,Audi S4,52490,2020 Audi S4 Premium Plus Sedan 									, Automatic,Premium Plus, 34714, Sedan,WAUB4AF4XLA067214,2020
+ AWD, Intercooled Turbo Premium Unleaded I-4 2.0 L/122, Jet Black, Black,BMW,3 Series,BMW 3 Series,29990,2019 BMW 3 Series 330i xDrive Sedan 									, Automatic,330i xDrive, 45154, Sedan,3MW5R7J56K8A05322,2019
+ AWD, Intercooled Turbo Premium Unleaded I-4 2.0 L/122, Mineral Gray Metallic, Black,BMW,3 Series,BMW 3 Series,33490,2019 BMW 3 Series 330i xDrive Sedan 									, Automatic,330i xDrive, 21721, Sedan,3MW5R7J56K8B03086,2019
+ AWD, Intercooled Turbo Premium Unleaded I-4 2.0 L/122, Portimao Blue Metallic,,BMW,3 Series,BMW 3 Series,34990,2019 BMW 3 Series 330i xDrive Sedan 									, Automatic,330i xDrive, 39057, Sedan,WBA5R7C54KAJ78967,2019
+ AWD, Gas V10 5.2L/318, Black, Black,Audi,S6,Audi S6,9995,2010 Audi S6 Prestige Sedan 									, Automatic,Prestige, 115994, Sedan,WAUBNAFB9AN033279,2010
+ AWD, Twin Turbo Premium Unleaded V-8 4.0 L/244, Black, Black,Audi,SQ7,Audi SQ7,82990,2021 Audi SQ7 Premium Plus SUV 									, Automatic,Premium Plus, 17510, SUV,WA1AWBF7XMD026262,2021
+ AWD, Intercooled Turbo Premium Unleaded V-6 3.0 L/183, Blue, Black,Audi,S5 Sportback,Audi S5 Sportback,45990,2019 Audi S5 Sportback Premium Plus Hatchback 									, Automatic,Premium Plus, 30917, Hatchback,WAUB4CF54KA041467,2019
+ AWD, Intercooled Supercharger Premium Unleaded V-6 3.0 L/183, Glacier White Metallic, Beige,Audi,Q7,Audi Q7,36490,2018 Audi Q7 Premium SUV 									, Automatic,Premium, 35856, SUV,WA1AAAF7XJD048976,2018
+ AWD, Intercooled Turbo Premium Unleaded I-4 2.0 L/122, Alfa Black, Black,Alfa Romeo,Giulia,Alfa Romeo Giulia,30490,2020 Alfa Romeo Giulia Base Sedan 									, Automatic,Base, 7383, Sedan,ZARFANAN4L7634718,2020
+ AWD, Intercooled Turbo Gas/Electric V-6 3.0 L/183, Black, Black,Audi,Q8,Audi Q8,55990,2019 Audi Q8 Premium Plus SUV 									, Automatic,Premium Plus, 48631, SUV,WA1BVAF18KD014699,2019
+ AWD, Intercooled Turbo Premium Unleaded I-4 2.0 L/122, Gray, Black,Acura,TLX,Acura TLX,41990,2021 Acura TLX SH-AWD w/A-Spec Package									, Automatic,w/A-Spec Package, 13460, Sedan,19UUB6F56MA006677,2021
+ AWD, Premium Unleaded V-6 3.5 L/212, Silver, Black,Acura,TLX,Acura TLX,28990,2019 Acura TLX 3.5L SH-AWD w/Technology Pkg									, Automatic,w/Technology Pkg, 33646, Sedan,19UUB3F52KA801723,2019
+ FWD, Intercooled Turbo Premium Unleaded I-4 2.0 L/122, White,,Acura,TLX,Acura TLX,37490,2021 Acura TLX FWD w/A-Spec Package									, Automatic,w/A-Spec Package, 32201, Sedan,19UUB5F5XMA003355,2021
+ AWD, Premium Unleaded V-6 3.5 L/212, White, Black,Acura,MDX,Acura MDX,39990,2020 Acura MDX SH-AWD 7-Passenger w/Technology Pkg									, Automatic,w/Technology Pkg, 15703, SUV,5J8YD4H56LL033894,2020
+ FWD, Premium Unleaded V-6 3.5 L/212, Gray, Black,Acura,TLX,Acura TLX,24990,2020 Acura TLX 3.5L FWD									, Automatic,3.5L V6, 52756, Sedan,19UUB2F31LA001585,2020
+ FWD, Premium Unleaded I-4 2.4 L/144, Bellanova White Pearl, Tan,Acura,TLX,Acura TLX,21990,2018 Acura TLX 2.4L FWD									, Automatic,2.4L, 35881, Sedan,19UUB1F33JA004673,2018
+ FWD, Intercooled Turbo Premium Unleaded I-4 2.0 L/122, Violet, Black,Acura,TLX,Acura TLX,37490,2021 Acura TLX FWD w/Technology Package									, Automatic,w/Technology Package, 12371, Sedan,19UUB5F44MA013144,2021
+ AWD, Premium Unleaded V-6 3.5 L/212, Platinum White Pearl,,Acura,TLX,Acura TLX,30990,2020 Acura TLX 3.5L SH-AWD w/Technology Pkg									, Automatic,w/Technology Pkg, 38556, Sedan,19UUB3F44LA001580,2020
+ AWD, Premium Unleaded V-6 3.5 L/212, Red, Beige,Acura,MDX,Acura MDX,37990,2020 Acura MDX SH-AWD 7-Passenger									, Automatic,3.5L, 6332, SUV,5J8YD4H30LL004177,2020
+ AWD, Intercooled Turbo Premium Unleaded I-4 2.0 L/122, Black, Black,Acura,RDX,Acura RDX,34490,2020 Acura RDX SH-AWD w/Technology Pkg									, Automatic,w/Technology Pkg, 34116, SUV,5J8TC2H50LL007082,2020
+ FWD, Premium Unleaded I-4 2.4 L/144, Gray, Black,Acura,ILX,Acura ILX,22990,2020 Acura ILX Sedan									, Automatic,Base, 30384, Sedan,19UDE2F34LA004973,2020
