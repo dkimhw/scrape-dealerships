@@ -3,8 +3,7 @@ import scrapy
 from ..items import Car
 from urllib.parse import urljoin
 import re
-from scrapy.crawler import CrawlerProcess
-
+import time
 
 class StreamAutoOutletSpider(scrapy.Spider):
     name = "stream_auto_outlet"
@@ -26,18 +25,34 @@ class StreamAutoOutletSpider(scrapy.Spider):
       links = response.xpath("//h4[@class='srp-vehicle-title']/a/@href").extract()
       for link in links:
         url = urljoin(response.url, link)
+        time.sleep(1)
         yield scrapy.Request(url, callback=self.parse_car)
 
-      filename = f'links.html'
-      with open(filename, 'wb') as f:
-          f.write(links)
-      self.log(f'Saved file {filename}')
+      next_page = response.xpath("//ul[@class='pagination']/li[@class='arrow']/a/@href").extract()
+
+      # Additional layer of logic required to correctly retrieve the next url:
+      if next_page:
+        if len(next_page) == 2:
+          next_page = next_page[0]
+        elif len(next_page) > 2:
+          next_page = next_page[1]
+      else:
+        next_page = None
+      print("Next Page: ", next_page)
+      if next_page:
+        next_page_url = f"https://www.streamautooutlet.com{next_page}"
+        yield scrapy.Request(
+            url=next_page_url,
+            callback=self.parse
+        )
+      else:
+        print('No more pages to scrape')
 
     def parse_car(self, response):
       item = Car()
       vehicle_data1 = response.xpath("//script[contains(text(),'fzDataLayer')]").extract()[1]
       # Parse title
-      title = response.xpath("//div[@class='columns vehicle-title']/h1/span/text()").extract()[0]
+      title = response.xpath("//div[@class='columns vehicle-title']/h1/span/text()").extract()[0].strip()
       item['title'] = title if title else None
 
       year = re.search('"year": (.)+,', vehicle_data1 )
@@ -58,7 +73,7 @@ class StreamAutoOutletSpider(scrapy.Spider):
 
       price = re.search('"sellingprice": (.)+,', vehicle_data1 )
       price = price.group(0).replace('"sellingprice": ', '').replace('"', '').replace(',', '')
-      item['price'] = price if price else None
+      item['price'] = int(price) if price else None
 
       # Other Vehicle Details
       key_data = response.xpath("//div[has-class('columns', 'show-for-small-only')]/div[@class='vdp-vehicle-details']/ul[@class='no-bullet']/li/span/text()").extract()
@@ -102,7 +117,7 @@ class StreamAutoOutletSpider(scrapy.Spider):
 
       item['vehicle_type'] = vehicle_type
       item['model_trim'] = item['make'] + ' ' + item['model']
-      item['vehicle_mileage'] = mileage
+      item['mileage'] = int(mileage) if mileage else None
       item['interior_color'] = interior_color
       item['exterior_color'] = exterior_color
       item['drivetrain'] = drivetrain
@@ -110,22 +125,4 @@ class StreamAutoOutletSpider(scrapy.Spider):
       item['engine'] = engine
       item['vin'] = vin
 
-
       yield item
-
-      # yield item
-    #     for p in products:
-    #         url = urljoin(response.url, p)
-    #         yield scrapy.Request(url, callback=self.parse_product)
-
-    # def parse_product(self, response):
-    #     for info in response.css('div.ph-product-container'):
-    #         yield {
-    #             'product_name': info.css('h2.ph-product-name::text').extract_first(),
-    #             'product_image': info.css('div.ph-product-img-ctn a').xpath('@href').extract(),
-    #             'sku': info.css('span.ph-pid').xpath('@prod-sku').extract_first(),
-    #             'short_description': info.css('div.ph-product-summary::text').extract_first(),
-    #             'price': info.css('h2.ph-product-price > span.price::text').extract_first(),
-    #             'long_description': info.css('div#product_tab_1').extract_first(),
-    #             'specs': info.css('div#product_tab_2').extract_first(),
-    #         }
