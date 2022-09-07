@@ -11,7 +11,7 @@ class DealershipsScraperPipeline:
 
     ## Create quotes table if none exists
     self.cur.execute("""
-    CREATE TABLE IF NOT EXISTS inventory_test (
+    CREATE TABLE IF NOT EXISTS inventory (
         vin PRIMARY KEY,
         title TEXT,
         year INTEGER,
@@ -26,13 +26,20 @@ class DealershipsScraperPipeline:
         exterior_color TEXT,
         transmission TEXT,
         engine TEXT,
-        drivetrain TEXT
+        drivetrain TEXT,
+        dealership_name TEXT,
+        dealership_address TEXT,
+        dealership_zipcode TEXT,
+        dealership_city TEXT,
+        dealership_state TEXT,
+        scraped_url TEXT,
+        scraped_date TEXT
     )
     """)
 
   def process_item(self, item, spider):
     ## Check to see if text is already in database
-    self.cur.execute("select * from inventory_test where vin = ?", (item['vin'],))
+    self.cur.execute("select * from inventory where vin = ?", (item['vin'],))
     result = self.cur.fetchone()
 
     ## If it is in DB, create log message
@@ -40,18 +47,23 @@ class DealershipsScraperPipeline:
       spider.logger.warn("Item already in database: %s" % item['vin'])
     else:
       self.cur.execute("""
-          INSERT INTO inventory_test
+          INSERT INTO inventory
             (vin, title, year, make, model
             , trim, model_trim, price, mileage
             , vehicle_type, interior_color, exterior_color
-            , transmission, engine, drivetrain)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            , transmission, engine, drivetrain, dealership_name
+            , dealership_address, dealership_zipcode, dealership_city
+            , dealership_state, scraped_url, scraped_date)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       """,
       (
           item['vin'], item['title'], item['year'], item['make'], item['model']
           , item['trim'], item['model_trim'], item['price'], item['mileage']
           , item['vehicle_type'], item['interior_color'], item['exterior_color']
           , item['transmission'], item['engine'], item['drivetrain']
+          , item['dealership_name'], item['dealership_address'], item['dealership_zipcode']
+          , item['dealership_city'], item['dealership_state'], item['scraped_url']
+          , item['scraped_date']
       ))
 
       ## Execute insert of data into database

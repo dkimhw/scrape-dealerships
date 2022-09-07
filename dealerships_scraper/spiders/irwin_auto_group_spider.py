@@ -1,8 +1,9 @@
 
 import scrapy
-from ..items import Car
-from urllib.parse import urljoin
-import time
+from items import Car
+import datetime
+# from dealerships_scraper.items import Car
+
 
 class IrwinAutoGroupSpider(scrapy.Spider):
     name = "irwin_auto_group"
@@ -21,7 +22,7 @@ class IrwinAutoGroupSpider(scrapy.Spider):
     def parse(self, response):
       selectors = response.xpath("//div[@class='row srpVehicle hasVehicleInfo']")
       for selector in selectors:
-        yield from self.parse_car(selector)
+        yield from self.parse_car(selector, response.url)
 
       # https://www.irwinzone.com/searchused.aspx?pn=50&pt=2
       next_page = response.xpath("//a[@class='stat-arrow-next']/@href").extract()[0]
@@ -37,7 +38,7 @@ class IrwinAutoGroupSpider(scrapy.Spider):
       else:
         print('No more pages to scrape')
 
-    def parse_car(self, response):
+    def parse_car(self, response, current_url):
       item = Car()
 
       # Parse title
@@ -85,5 +86,13 @@ class IrwinAutoGroupSpider(scrapy.Spider):
 
       vin = response.xpath("@data-vin").extract()[0].strip()
       item['vin'] = vin if vin else None
+
+      item['dealership_name'] = self.DEALERSHIP_INFO['dealership_name']
+      item['dealership_address'] = self.DEALERSHIP_INFO['address']
+      item['dealership_zipcode'] = self.DEALERSHIP_INFO['zipcode']
+      item['dealership_city'] = self.DEALERSHIP_INFO['city']
+      item['dealership_state'] = self.DEALERSHIP_INFO['state']
+      item['scraped_url'] = current_url
+      item['scraped_date'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
       yield item

@@ -15,15 +15,19 @@ conn = sqlite3.connect('data/cars_test.db')
 
 sql_query = '''
 
-      SELECT
-          count(*)
-      FROM
-        inventory_test;
+select dealership_name, count(*) from inventory group by 1;
 
 '''
 result = pd.read_sql_query(sql_query, conn)
 print(result[:3])
 
+# drop_query = '''
+# drop table inventory
+# '''
+
+# cur = conn.cursor()
+# cur.execute(drop_query)
+# conn.commit()
 
 ####### Drop Table
 
