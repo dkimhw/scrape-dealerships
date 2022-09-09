@@ -1,9 +1,11 @@
 
 import scrapy
-from items import Car
+# from items import Car
 import datetime
-# from dealerships_scraper.items import Car
-
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.dirname('dealerships_scraper')))
+import items
 
 class IrwinAutoGroupSpider(scrapy.Spider):
     name = "irwin_auto_group"
@@ -39,7 +41,7 @@ class IrwinAutoGroupSpider(scrapy.Spider):
         print('No more pages to scrape')
 
     def parse_car(self, response, current_url):
-      item = Car()
+      item = items.Car()
 
       # Parse title
       title = response.xpath("@data-name").extract()[0].strip()

@@ -31,9 +31,9 @@ COOKIES_ENABLED = False
 #     "Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52",
 # ]
 
-ITEM_PIPELINES = {
-  'dealerships_scraper.pipelines.DealershipsScraperPipeline': 300,
-}
+# ITEM_PIPELINES = {
+#   'dealerships_scraper.pipelines.DealershipsScraperPipeline': 300,
+# }
 
 # Obey robots.txt rules
 # ROBOTSTXT_OBEY = True
