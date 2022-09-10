@@ -8,6 +8,11 @@ NEWSPIDER_MODULE = 'dealerships_scraper.spiders'
 RETRY_ENABLED = False
 COOKIES_ENABLED = False
 
+ITEM_PIPELINES = {
+  'dealerships_scraper.pipelines.DealershipsScraperPipeline': 300,
+}
+
+
 # DOWNLOADER_MIDDLEWARES = {
 #     'testspiders.middleware.RandomUserAgent': 1,
 # }
@@ -30,10 +35,6 @@ COOKIES_ENABLED = False
 #     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/535.20 (KHTML, like Gecko) Chrome/19.0.1036.7 Safari/535.20",
 #     "Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52",
 # ]
-
-# ITEM_PIPELINES = {
-#   'dealerships_scraper.pipelines.DealershipsScraperPipeline': 300,
-# }
 
 # Obey robots.txt rules
 # ROBOTSTXT_OBEY = True

@@ -1,4 +1,5 @@
 
+
 import scrapy
 import datetime
 import os
@@ -22,12 +23,17 @@ class CTAutoSpider(scrapy.Spider):
     }
 
     def parse(self, response):
-      selectors = response.xpath("//div[@class='col-item col-item-inv']")
+      selectors = response.xpath("//div[@class='thumbnail']")
       for selector in selectors:
         yield from self.parse_car(selector, response.url)
 
-      # next_page = response.xpath("//a[@class='stat-arrow-next']/@href").extract()[0]
+      next_page = response.xpath("//div[@class='dwfloatL']/a[contains(text(), 'Next')]/@href").extract()
 
+      if len(next_page) > 0:
+        next_page = next_page[0]
+        yield scrapy.Request(url=next_page, callback=self.parse)
+      else:
+        print('No more pages to scrape')
       # print("Next Page: ", next_page)
       # if next_page:
       #   next_page_url = f"https://www.irwinzone.com{next_page}"
@@ -41,46 +47,42 @@ class CTAutoSpider(scrapy.Spider):
     def parse_car(self, response, current_url):
       item = items.Car()
 
-      get_item_data_from_xpath(response, "//span[@id='MdivYear_0']/text()", item, 'year', 'int')
-      get_item_data_from_xpath(response, "//span[@id='MdivMake_0']/text()", item, 'make', 'str')
-      get_item_data_from_xpath(response, "//span[@id='MdivModel_0']/text()", item, 'model', 'str')
-      get_item_data_from_xpath(response, "//div[@id='MdivTrim_0']/text()", item, 'trim', 'str')
-      get_item_data_from_xpath(response, "//div[@id='MDWInvPriceSpan_0']/text()", item, 'price', 'float')
-      get_item_data_from_xpath(response, "//div[@id='MdwBoxInvMiles_1']/text()", item, 'price', 'int')
-      get_item_data_from_xpath(response, '//li[@class="list-group-item InvEnginetype"]/span/span[@class="dw-p0"]/text()', item, 'engine', 'str')
+      # ".//span[@itemprop='vehicleModelDate']/text()"
+      get_item_data_from_xpath(response, ".//a[@class='listitemlink']/span/span[@itemprop='vehicleModelDate']/text()", item, 'year', 'int')
+
+      get_item_data_from_xpath(response, ".//a[@class='listitemlink']/span/span[@itemprop='manufacturer']/text()", item, 'make', 'str')
+
+      get_item_data_from_xpath(response, ".//a[@class='listitemlink']/span/span[@itemprop='model']/text()", item, 'model', 'str')
+
+      get_item_data_from_xpath(response, ".//a[@class='listitemlink']/span/span[@itemprop='vehicleConfiguration']/text()", item, 'trim', 'str')
 
       title = str(item['year']) + ' ' + str(item['make']) + ' ' + str(item['model']) + str(item['trim'])
       item['title'] = title
 
-      # price = response.xpath("//div[@id='MDWInvPriceSpan_0']/text()").extract()[0].strip()
-      # item['price'] = float(price) if price else None
+      model_trim = str(item['model']) + ' ' + str(item['trim'])
+      item['model_trim'] = model_trim
 
-      # vehicle_type = response.xpath("@data-bodystyle").extract()[0].strip()
-      # item['vehicle_type'] = vehicle_type if vehicle_type else None
+      get_item_data_from_xpath(response, ".//div[@class='pricetag']/div[@class='inv-price internet-price DWInvListPriceSpan']/span[@itemprop='price']/text()", item, 'price', 'float')
 
-      # item['model_trim'] = item['make'] + ' ' + item['model']
+      get_item_data_from_xpath(response, ".//li[@class='list-group-item mileage']/span/span[@class='dw-p0']/text()", item, 'mileage', 'int')
 
-      # mileage = response.xpath("@data-mileage").extract()[0]
-      # item['mileage'] = int(mileage) if mileage else None
+      get_item_data_from_xpath(response, ".//li[@class='list-group-item InvEnginetype']/span/span[@class='dw-p0']/text()", item, 'engine', 'str')
 
-      # interior_color = response.xpath("@data-intcolor").extract()[0].strip()
-      # item['interior_color'] = interior_color if interior_color else None
+      get_item_data_from_xpath(response, ".//span[@itemprop='vehicleTransmission']/text()", item, 'transmission', 'str')
 
-      # exterior_color = response.xpath("@data-extcolor").extract()[0].strip()
-      # item['exterior_color'] = exterior_color if exterior_color else None
+      get_item_data_from_xpath(response, ".//span[@itemprop='driveWheelConfiguration']/text()", item, 'drivetrain', 'str')
 
-      # drivetrain = response.xpath("@data-drivetrain").extract()[0].strip()
-      # item['drivetrain'] = drivetrain if drivetrain else None
+      get_item_data_from_xpath(response, ".//span[@itemprop='color']/text()", item, 'exterior_color', 'str')
 
-      # transmission = response.xpath("@data-trans").extract()[0].strip()
-      # item['transmission'] = transmission if transmission else None
+      get_item_data_from_xpath(response, ".//span[@itemprop='vehicleIdentificationNumber']/text()", item, 'vin', 'str')
 
-      # engine = response.xpath("@data-engine").extract()[0].strip()
-      # item['engine'] = engine if engine else None
+      # No vehicle type to scrape
+      item['vehicle_type'] = None
 
-      # vin = response.xpath("@data-vin").extract()[0].strip()
-      # item['vin'] = vin if vin else None
+      # No interior color to scrape
+      item['interior_color'] = None
 
+      # Dealership info
       item['dealership_name'] = self.DEALERSHIP_INFO['dealership_name']
       item['dealership_address'] = self.DEALERSHIP_INFO['address']
       item['dealership_zipcode'] = self.DEALERSHIP_INFO['zipcode']
