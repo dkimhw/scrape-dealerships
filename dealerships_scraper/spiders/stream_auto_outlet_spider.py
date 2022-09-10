@@ -1,9 +1,15 @@
 
 import scrapy
-from ..items import Car
+#from items import Car
 from urllib.parse import urljoin
 import re
 import time
+import datetime
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.dirname('dealerships_scraper')))
+import items
+
 
 class StreamAutoOutletSpider(scrapy.Spider):
     name = "stream_auto_outlet"
@@ -49,7 +55,7 @@ class StreamAutoOutletSpider(scrapy.Spider):
         print('No more pages to scrape')
 
     def parse_car(self, response):
-      item = Car()
+      item = items.Car()
       vehicle_data1 = response.xpath("//script[contains(text(),'fzDataLayer')]").extract()[1]
       # Parse title
       title = response.xpath("//div[@class='columns vehicle-title']/h1/span/text()").extract()[0].strip()
@@ -124,5 +130,12 @@ class StreamAutoOutletSpider(scrapy.Spider):
       item['transmission'] = transmission
       item['engine'] = engine
       item['vin'] = vin
+      item['dealership_name'] = self.DEALERSHIP_INFO['dealership_name']
+      item['dealership_address'] = self.DEALERSHIP_INFO['address']
+      item['dealership_zipcode'] = self.DEALERSHIP_INFO['zipcode']
+      item['dealership_city'] = self.DEALERSHIP_INFO['city']
+      item['dealership_state'] = self.DEALERSHIP_INFO['state']
+      item['scraped_url'] = response.url
+      item['scraped_date'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
       yield item
