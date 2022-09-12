@@ -1,6 +1,5 @@
 
 import scrapy
-#from items import Car
 from urllib.parse import urljoin
 import re
 import time
@@ -15,7 +14,7 @@ from spiders_utils import get_item_data_from_xpath
 class JohnsAutoGroupSpider(scrapy.Spider):
     name = "johns_auto_group"
     start_urls = [
-        'https://johnsautosales.com/newandusedcars?clearall=1',
+        'https://johnsautosales.com/newandusedcars?page=1'
     ]
 
     DEALERSHIP_INFO = {
@@ -28,12 +27,22 @@ class JohnsAutoGroupSpider(scrapy.Spider):
 
     def parse(self, response):
       links = response.xpath("//h4[@class='vehicleTitleWrap d-none d-md-block']/a/@href").extract()
+
+      if len(links) == 0:
+        return
+
       for link in links:
         url = f"https://johnsautosales.com{link}"
         time.sleep(1)
         yield scrapy.Request(url, callback=self.parse_car)
 
-      # next_page = response.xpath("//ul[@class='pagination']/li[@class='arrow']/a/@href").extract()
+      curr_page = int(re.search('page=([0-9])+', response.url)[0].replace('page=', ''))
+      next_page_url = re.sub('page=([0-9])+', f'page={curr_page + 1}', response.url)
+      yield scrapy.Request(
+          url=next_page_url,
+          callback=self.parse
+      )
+
 
       # # Additional layer of logic required to correctly retrieve the next url:
       # if next_page:
@@ -61,6 +70,7 @@ class JohnsAutoGroupSpider(scrapy.Spider):
       get_item_data_from_xpath(response, "//div[@class='col-sm-6']/p[@class='optModel']/text()", item, 'model', 'str', 1)
       get_item_data_from_xpath(response, "//div[@class='col-sm-6']/p[@class='optTrim']/text()", item, 'trim', 'str', 1)
       item['title'] = str(item['year']) + ' ' + str(item['make']) + ' ' + str(item['model']) + str(item['trim'])
+      item['model_trim'] = str(item['model']) + ' ' + str(item['trim'])
 
       get_item_data_from_xpath(response, "//div[@class='col-sm-6']/p[@class='optMileage']/text()", item, 'mileage', 'int', 1)
       get_item_data_from_xpath(response, "//span[@class='lblPrice']/text()", item, 'price', 'int')
