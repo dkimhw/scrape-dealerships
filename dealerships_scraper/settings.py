@@ -8,9 +8,9 @@ NEWSPIDER_MODULE = 'dealerships_scraper.spiders'
 RETRY_ENABLED = False
 COOKIES_ENABLED = False
 
-ITEM_PIPELINES = {
-  'dealerships_scraper.pipelines.DealershipsScraperPipeline': 300,
-}
+# ITEM_PIPELINES = {
+#   'dealerships_scraper.pipelines.DealershipsScraperPipeline': 300,
+# }
 
 
 # DOWNLOADER_MIDDLEWARES = {
