@@ -1,10 +1,11 @@
 # Define your item pipelines here
 import sqlite3
+import datetime
 
 class DealershipsScraperPipeline:
   def __init__(self):
     ## Create/Connect to database
-    self.con = sqlite3.connect('../data/cars_test.db')
+    self.con = sqlite3.connect('../database/cars_test.db')
 
     ## Create cursor, used to execute commands
     self.cur = self.con.cursor()
@@ -38,8 +39,11 @@ class DealershipsScraperPipeline:
     """)
 
   def process_item(self, item, spider):
+    curr_date =  datetime.date.today()
+    beg_month = datetime.date(curr_date.year, curr_date.month, 1).strftime("%Y-%m-%d")
+
     ## Check to see if text is already in database
-    self.cur.execute("select * from inventory where vin = ?", (item['vin'],))
+    self.cur.execute("select * from inventory where vin = ? and DATE(scraped_date, 'start of month') = ?", (item['vin'], beg_month, ))
     result = self.cur.fetchone()
 
     ## If it is in DB, create log message
