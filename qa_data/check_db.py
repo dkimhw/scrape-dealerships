@@ -19,7 +19,7 @@ select dealership_name, count(*) from inventory group by 1;
 
 '''
 result = pd.read_sql_query(sql_query, conn)
-print(result[:3])
+print(result)
 
 # drop_query = '''
 # drop table inventory

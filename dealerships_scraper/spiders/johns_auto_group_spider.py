@@ -43,25 +43,6 @@ class JohnsAutoGroupSpider(scrapy.Spider):
           callback=self.parse
       )
 
-
-      # # Additional layer of logic required to correctly retrieve the next url:
-      # if next_page:
-      #   if len(next_page) == 2:
-      #     next_page = next_page[0]
-      #   elif len(next_page) > 2:
-      #     next_page = next_page[1]
-      # else:
-      #   next_page = None
-      # print("Next Page: ", next_page)
-      # if next_page:
-      #   next_page_url = f"https://www.streamautooutlet.com{next_page}"
-      #   yield scrapy.Request(
-      #       url=next_page_url,
-      #       callback=self.parse
-      #   )
-      # else:
-      #   print('No more pages to scrape')
-
     def parse_car(self, response):
       item = items.Car()
 

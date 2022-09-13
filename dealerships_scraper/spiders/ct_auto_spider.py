@@ -49,11 +49,8 @@ class CTAutoSpider(scrapy.Spider):
 
       # ".//span[@itemprop='vehicleModelDate']/text()"
       get_item_data_from_xpath(response, ".//a[@class='listitemlink']/span/span[@itemprop='vehicleModelDate']/text()", item, 'year', 'int')
-
       get_item_data_from_xpath(response, ".//a[@class='listitemlink']/span/span[@itemprop='manufacturer']/text()", item, 'make', 'str')
-
       get_item_data_from_xpath(response, ".//a[@class='listitemlink']/span/span[@itemprop='model']/text()", item, 'model', 'str')
-
       get_item_data_from_xpath(response, ".//a[@class='listitemlink']/span/span[@itemprop='vehicleConfiguration']/text()", item, 'trim', 'str')
 
       title = str(item['year']) + ' ' + str(item['make']) + ' ' + str(item['model']) + str(item['trim'])
