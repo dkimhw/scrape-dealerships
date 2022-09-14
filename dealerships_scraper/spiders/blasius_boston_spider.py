@@ -32,7 +32,6 @@ class BlasiusBostonSpider(scrapy.Spider):
       return
 
     for link in links:
-      time.sleep(2.5)
       yield scrapy.Request(link, callback=self.parse_car)
 
     curr_page = int(re.search('page=([0-9])+', response.url)[0].replace('page=', ''))
@@ -70,5 +69,6 @@ class BlasiusBostonSpider(scrapy.Spider):
     item['dealership_state'] = self.DEALERSHIP_INFO['state']
     item['scraped_url'] = response.url
     item['scraped_date'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    time.sleep(2)
 
     yield item

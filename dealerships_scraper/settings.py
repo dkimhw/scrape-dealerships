@@ -12,7 +12,7 @@ ITEM_PIPELINES = {
   'dealerships_scraper.pipelines.DealershipsScraperPipeline': 300,
 }
 
-
+DOWNLOADER_CLIENT_TLS_METHOD = 'TLSv1.2'
 # DOWNLOADER_MIDDLEWARES = {
 #     'testspiders.middleware.RandomUserAgent': 1,
 # }
