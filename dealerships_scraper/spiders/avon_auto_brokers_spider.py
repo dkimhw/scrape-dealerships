@@ -50,7 +50,7 @@ class AvonAutoBrokersSpider(scrapy.Spider):
     item['model'] = model if model != '' else None
     get_item_data_from_xpath(response, ".//span[@class='vehicleTrim']/text()", item, 'trim', 'str')
 
-    title = str(item['year']) + ' ' + str(item['make']) + ' ' + str(item['model']) + str(item['trim'])
+    title = str(item['year']) + ' ' + str(item['make']) + ' ' + str(item['model']) + ' ' + str(item['trim'])
     item['title'] = title
     model_trim = str(item['model']) + ' ' + str(item['trim'])
     item['model_trim'] = model_trim

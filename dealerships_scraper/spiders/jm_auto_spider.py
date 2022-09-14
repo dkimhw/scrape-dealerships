@@ -47,7 +47,7 @@ class JMAutoSpider(scrapy.Spider):
 
     get_item_data_from_xpath(response, ".//a[@class='listitemlink']/span/span[@itemprop='vehicleConfiguration']/text()", item, 'trim', 'str')
 
-    title = str(item['year']) + ' ' + str(item['make']) + ' ' + str(item['model']) + str(item['trim'])
+    title = str(item['year']) + ' ' + str(item['make']) + ' ' + str(item['model']) + ' ' + str(item['trim'])
     item['title'] = title
 
     model_trim = str(item['model']) + ' ' + str(item['trim'])
