@@ -11,7 +11,7 @@ pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
 
-conn = sqlite3.connect('../data/cars_test.db')
+conn = sqlite3.connect('../database/cars_test.db')
 
 sql_query = '''
 
@@ -19,8 +19,20 @@ select dealership_name, count(*) from inventory group by 1;
 
 '''
 result = pd.read_sql_query(sql_query, conn)
-print(result[:3])
+print(result)
 
+
+import datetime
+end_date =  datetime.date.today()
+y = datetime.date(end_date.year, end_date.month, 1).strftime("%Y-%m-%d")
+# curr_beg_month = datetime.today().replace(day=1)
+# print(curr_beg_month)
+print("y", y)
+
+query2 = f"select vin, DATE(scraped_date, 'start of month') from inventory where vin = '19UDE2F34LA004973' and DATE(scraped_date, 'start of month') = '{y}'"
+#query2 = "select vin from inventory limit 1"
+result2 = pd.read_sql_query(query2, conn)
+print(result2)
 # drop_query = '''
 # drop table inventory
 # '''

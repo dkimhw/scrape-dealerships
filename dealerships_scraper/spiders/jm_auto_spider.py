@@ -8,17 +8,17 @@ sys.path.append(os.path.abspath(os.path.dirname('dealerships_scraper')))
 import items
 from spiders_utils import get_item_data_from_xpath
 
-class CTAutoSpider(scrapy.Spider):
-  name = "ct_auto"
+class JMAutoSpider(scrapy.Spider):
+  name = "jm_auto"
   start_urls = [
-    'https://www.ct-auto.com/cars-for-sale-in-Bridgeport-CT-Waterbury-Norwich/used_cars'
+    'https://www.jmautomotive.com/cars-for-sale-in-Naugatuck-CT-Hartford-New-Haven/used_cars'
   ]
 
   DEALERSHIP_INFO = {
-      'dealership_name': 'CT Auto',
-      'address': '7 Wayne Street',
-      'zipcode': '06606',
-      'city': 'Bridgeport',
+      'dealership_name': 'J&M Automotive',
+      'address': '756/820 New Haven Road',
+      'zipcode': '06770',
+      'city': 'Naugatuck',
       'state': 'CT'
   }
 
@@ -34,23 +34,17 @@ class CTAutoSpider(scrapy.Spider):
       yield scrapy.Request(url=next_page, callback=self.parse)
     else:
       print('No more pages to scrape')
-    # print("Next Page: ", next_page)
-    # if next_page:
-    #   next_page_url = f"https://www.irwinzone.com{next_page}"
-    #   yield scrapy.Request(
-    #       url=next_page_url,
-    #       callback=self.parse
-    #   )
-    # else:
-    #   print('No more pages to scrape')
 
   def parse_car(self, response, current_url):
     item = items.Car()
 
     # ".//span[@itemprop='vehicleModelDate']/text()"
     get_item_data_from_xpath(response, ".//a[@class='listitemlink']/span/span[@itemprop='vehicleModelDate']/text()", item, 'year', 'int')
+
     get_item_data_from_xpath(response, ".//a[@class='listitemlink']/span/span[@itemprop='manufacturer']/text()", item, 'make', 'str')
+
     get_item_data_from_xpath(response, ".//a[@class='listitemlink']/span/span[@itemprop='model']/text()", item, 'model', 'str')
+
     get_item_data_from_xpath(response, ".//a[@class='listitemlink']/span/span[@itemprop='vehicleConfiguration']/text()", item, 'trim', 'str')
 
     title = str(item['year']) + ' ' + str(item['make']) + ' ' + str(item['model']) + ' ' + str(item['trim'])
@@ -71,13 +65,12 @@ class CTAutoSpider(scrapy.Spider):
 
     get_item_data_from_xpath(response, ".//span[@itemprop='color']/text()", item, 'exterior_color', 'str')
 
+    get_item_data_from_xpath(response, ".//span[@itemprop='vehicleInteriorColor']/text()", item, 'interior_color', 'str')
+
     get_item_data_from_xpath(response, ".//span[@itemprop='vehicleIdentificationNumber']/text()", item, 'vin', 'str')
 
     # No vehicle type to scrape
     item['vehicle_type'] = None
-
-    # No interior color to scrape
-    item['interior_color'] = None
 
     # Dealership info
     item['dealership_name'] = self.DEALERSHIP_INFO['dealership_name']
