@@ -32,7 +32,7 @@ class BlasiusBostonSpider(scrapy.Spider):
       return
 
     for link in links:
-      time.sleep(1)
+      time.sleep(2.5)
       yield scrapy.Request(link, callback=self.parse_car)
 
     curr_page = int(re.search('page=([0-9])+', response.url)[0].replace('page=', ''))
