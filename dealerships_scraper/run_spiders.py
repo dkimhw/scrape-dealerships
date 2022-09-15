@@ -7,6 +7,8 @@ import spiders.jm_auto_spider as jm_auto_spider
 import spiders.johns_auto_group_spider as johns_auto_group_spider
 import spiders.avon_auto_brokers_spider as avon_auto_brokers_spider
 import spiders.blasius_boston_spider as blasius_boston_spider
+import spiders.newton_auto_sales_spider as newton_auto_sales_spider
+import spiders.fafama_auto_sales_spider as fafama_auto_sales_spider
 
 
 def run_spider():
@@ -19,6 +21,8 @@ def run_spider():
       # process.crawl(johns_auto_group_spider.JohnsAutoGroupSpider)
       # process.crawl(avon_auto_brokers_spider.AvonAutoBrokersSpider)
       process.crawl(blasius_boston_spider.BlasiusBostonSpider)
+      process.crawl(newton_auto_sales_spider.NewtonAutoSalesSpider)
+      process.crawl(fafama_auto_sales_spider.FafamaAutoSalesSpider)
       process.start()
     except Exception as e:
       print(e)

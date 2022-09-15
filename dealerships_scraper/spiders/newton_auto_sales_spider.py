@@ -47,7 +47,7 @@ class NewtonAutoSalesSpider(scrapy.Spider):
     get_item_data_from_xpath(response, "//div[@class='col-sm-6']/p[@class='optYear']/text()", item, 'year', 'int', 1)
     get_item_data_from_xpath(response, "//div[@class='col-sm-6']/p[@class='optMake']/text()", item, 'make', 'str', 1)
     get_item_data_from_xpath(response, "//div[@class='col-sm-6']/p[@class='optModel']/text()", item, 'model', 'str', 1)
-    get_item_data_from_xpath(response, "//div[@class='col-sm-6']/p[@class='optTrim']/text()", item, 'trim', 'str', 1)
+    get_item_data_from_xpath(response, "//div[@class='col-sm-6']/p[@class='optTrim optHidden']/text()", item, 'trim', 'str', 1)
     item['title'] = str(item['year']) + ' ' + str(item['make']) + ' ' + str(item['model']) + ' ' + str(item['trim'])
     item['model_trim'] = str(item['model']) + ' ' + str(item['trim'])
 
