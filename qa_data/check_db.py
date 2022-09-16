@@ -64,10 +64,10 @@ print(avg_scrape)
 # print(result2)
 
 
-query2 = f"select rowid, vin, scraped_date, year, make, model, trim, mileage, price from inventory where dealership_name = 'Avon Auto Brokers' and DATE(scraped_date, 'start of month') = '{y}'"
-result2 = pd.read_sql_query(query2, conn)
-print()
-print(result2)
+# query2 = f"select rowid, vin, scraped_date, year, make, model, trim, mileage, price from inventory where dealership_name = 'Avon Auto Brokers' and DATE(scraped_date, 'start of month') = '{y}'"
+# result2 = pd.read_sql_query(query2, conn)
+# print()
+# print(result2)
 
 
 

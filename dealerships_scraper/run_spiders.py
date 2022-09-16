@@ -1,4 +1,3 @@
-from re import A
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 import spiders.stream_auto_outlet_spider as stream_auto_outlet_spider
@@ -24,7 +23,6 @@ def run_spider():
       process.crawl(jm_auto_spider.JMAutoSpider)
       process.crawl(johns_auto_group_spider.JohnsAutoGroupSpider)
       process.crawl(avon_auto_brokers_spider.AvonAutoBrokersSpider)
-      process.crawl(blasius_boston_spider.BlasiusBostonSpider)
       process.crawl(blasius_boston_spider.BlasiusBostonSpider)
       process.crawl(newton_auto_sales_spider.NewtonAutoSalesSpider)
       process.crawl(fafama_auto_sales_spider.FafamaAutoSalesSpider)

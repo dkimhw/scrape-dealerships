@@ -10,6 +10,7 @@ from spiders_utils import get_item_data_from_xpath
 
 class JMAutoSpider(scrapy.Spider):
   name = "jm_auto"
+  user_agent = 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'
   start_urls = [
     'https://www.jmautomotive.com/cars-for-sale-in-Naugatuck-CT-Hartford-New-Haven/used_cars'
   ]
