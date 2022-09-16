@@ -2,31 +2,30 @@ import scrapy
 import time
 import datetime
 import os
-import sys
 import re
+import sys
 sys.path.append(os.path.abspath(os.path.dirname('dealerships_scraper')))
 import items
 from spiders_utils import get_item_data_from_xpath, get_car_make_model, get_vehicle_type
 
-class FafamaAutoSalesSpider(scrapy.Spider):
-  name = "fafama_auto_sales"
+class DirectAutoSpider(scrapy.Spider):
+  name = "direct_auto"
   user_agent = 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'
   start_urls = [
-      'https://www.fafama.com/inventory.aspx?_page=1'
+      'https://www.directautomecca.com/view-inventory.aspx?_page=1'
   ]
 
   DEALERSHIP_INFO = {
-    'dealership_name': 'Fafama Auto Sales',
-    'address': '5 Cape Road',
-    'zipcode': '01757',
-    'city': 'Milford',
+    'dealership_name': 'Direct Auto Mecca',
+    'address': '154 Waverly Street',
+    'zipcode': '01760',
+    'city': 'Natick',
     'state': 'MA'
   }
 
 
   def parse(self, response):
-    links = response.xpath("//h2[@class='color m-0 ebiz-vdp-title']/a/@href").extract()
-
+    links = response.xpath("//h2[@class='ebiz-vdp-title color m-0']/a/@href").extract()
     if len(links) == 0:
       return
 
@@ -45,7 +44,6 @@ class FafamaAutoSalesSpider(scrapy.Spider):
   def parse_car(self, response):
     item = items.Car()
 
-
     year_make_model = response.xpath(".//h1[@class='ebiz-vdp-title color m-0']/text()").extract()[0].strip()
     year, make, model = get_car_make_model(year_make_model)
     item['year'] = year if year != '' else None
@@ -56,7 +54,7 @@ class FafamaAutoSalesSpider(scrapy.Spider):
     item['model_trim'] = str(item['model']) + ' ' + str(item['trim']) if item['trim'] != None else ''
 
     get_item_data_from_xpath(response, ".//tr[@class='miles-row']/td[@class='tright']/text()", item, 'mileage', 'int')
-    get_item_data_from_xpath(response, ".//h2[@class='money-sign-disp body-font d-inline m-0 color h3']/text()", item, 'price', 'int')
+    get_item_data_from_xpath(response, ".//h2[@class='money-sign-disp body-font d-inline m-0']/text()", item, 'price', 'int')
 
     get_item_data_from_xpath(response, ".//tr[@class='transmission-row']/td[@class='tright']/text()", item, 'transmission', 'str')
     get_item_data_from_xpath(response, ".//tr[@class='vin-row']/td[@class='tright']/text()", item, 'vin', 'str')
@@ -65,9 +63,7 @@ class FafamaAutoSalesSpider(scrapy.Spider):
     get_item_data_from_xpath(response, ".//tr[@class='ext-color-row']/td[@class='tright']/text()", item, 'exterior_color', 'str')
     get_item_data_from_xpath(response, ".//tr[@class='drivetrain-row']/td[@class='tright']/text()", item, 'drivetrain', 'str')
 
-    trim_data = response.xpath(".//span[@class='ebiz-vdp-subtitle h3 body-color d-block m-0']/text()").get()
-    if trim_data != None:
-      item['vehicle_type'] = get_vehicle_type(trim_data)
+    item['vehicle_type'] = None
 
     item['dealership_name'] = self.DEALERSHIP_INFO['dealership_name']
     item['dealership_address'] = self.DEALERSHIP_INFO['address']

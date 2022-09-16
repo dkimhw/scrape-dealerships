@@ -13,6 +13,7 @@ from spiders_utils import get_item_data_from_xpath
 
 class BlasiusBostonSpider(scrapy.Spider):
   name = "blasius_boston"
+  user_agent = 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'
   start_urls = [
       'https://www.blasiusboston.com/used-cars-holliston-ma?page=1'
   ]
@@ -32,6 +33,7 @@ class BlasiusBostonSpider(scrapy.Spider):
       return
 
     for link in links:
+      time.sleep(2)
       yield scrapy.Request(link, callback=self.parse_car)
 
     curr_page = int(re.search('page=([0-9])+', response.url)[0].replace('page=', ''))
@@ -69,6 +71,5 @@ class BlasiusBostonSpider(scrapy.Spider):
     item['dealership_state'] = self.DEALERSHIP_INFO['state']
     item['scraped_url'] = response.url
     item['scraped_date'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    time.sleep(2)
 
     yield item

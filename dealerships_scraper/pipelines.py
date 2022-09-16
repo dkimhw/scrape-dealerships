@@ -5,7 +5,7 @@ import datetime
 class DealershipsScraperPipeline:
   def __init__(self):
     ## Create/Connect to database
-    self.con = sqlite3.connect('../database/cars_test.db')
+    self.con = sqlite3.connect('../database/cars.db')
 
     ## Create cursor, used to execute commands
     self.cur = self.con.cursor()
@@ -13,7 +13,7 @@ class DealershipsScraperPipeline:
     ## Create quotes table if none exists
     self.cur.execute("""
     CREATE TABLE IF NOT EXISTS inventory (
-        vin PRIMARY KEY,
+        vin TEXT NOT NULL,
         title TEXT,
         year INTEGER,
         make TEXT,

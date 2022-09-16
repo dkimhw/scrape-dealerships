@@ -4,3 +4,5 @@ __pycache__
 *.ipynb
 .DS_Store
 explore_cars_test_db.ipynb
+.python-version
+/database/backup.sql
