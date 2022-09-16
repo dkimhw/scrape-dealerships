@@ -50,3 +50,11 @@ def get_car_make_model(title):
   clean_model = clean_model.strip()
   print(clean_make)
   return year, clean_make, clean_model
+
+
+def get_vehicle_type(string):
+  valid_vehicle_type = ['Sedan', 'SUV', 'Coupe', 'Wagon', 'Hatchback', 'Convertible', 'Truck', 'Cargo Van', 'Van']
+  for vt in valid_vehicle_type:
+    if vt.lower() in string.lower():
+      return vt
+  return None

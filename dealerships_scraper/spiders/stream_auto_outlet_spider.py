@@ -12,6 +12,7 @@ import items
 
 class StreamAutoOutletSpider(scrapy.Spider):
   name = "stream_auto_outlet"
+  user_agent = 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'
   start_urls = [
       'https://www.streamautooutlet.com/inventory?type=used',
   ]

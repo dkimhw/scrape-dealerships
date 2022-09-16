@@ -1,6 +1,5 @@
 
 import scrapy
-# from items import Car
 import datetime
 import os
 import sys

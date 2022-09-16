@@ -34,20 +34,10 @@ class CTAutoSpider(scrapy.Spider):
       yield scrapy.Request(url=next_page, callback=self.parse)
     else:
       print('No more pages to scrape')
-    # print("Next Page: ", next_page)
-    # if next_page:
-    #   next_page_url = f"https://www.irwinzone.com{next_page}"
-    #   yield scrapy.Request(
-    #       url=next_page_url,
-    #       callback=self.parse
-    #   )
-    # else:
-    #   print('No more pages to scrape')
 
   def parse_car(self, response, current_url):
     item = items.Car()
 
-    # ".//span[@itemprop='vehicleModelDate']/text()"
     get_item_data_from_xpath(response, ".//a[@class='listitemlink']/span/span[@itemprop='vehicleModelDate']/text()", item, 'year', 'int')
     get_item_data_from_xpath(response, ".//a[@class='listitemlink']/span/span[@itemprop='manufacturer']/text()", item, 'make', 'str')
     get_item_data_from_xpath(response, ".//a[@class='listitemlink']/span/span[@itemprop='model']/text()", item, 'model', 'str')

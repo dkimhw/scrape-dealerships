@@ -13,8 +13,12 @@ pip install requirements.txt
 cd dealerships_scraper
 ```
 
-3. Run `run_spiders.py`
+3. Run `run_spiders.py` or `run_spiders.sh`
 
 ```python
 python run_spiders.py
+```
+
+```bash
+bash run_spiders.sh
 ```
