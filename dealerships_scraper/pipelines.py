@@ -1,40 +1,41 @@
 # Define your item pipelines here
-import sqlite3
+import psycopg2
+from config import settings
 import datetime
 
 class DealershipsScraperPipeline:
   def __init__(self):
     ## Create/Connect to database
-    self.con = sqlite3.connect('../database/cars.db')
+    self.con = psycopg2.connect(user = settings.username, password = settings.password , host= settings.host, port = settings.port, database = settings.database)
 
     ## Create cursor, used to execute commands
     self.cur = self.con.cursor()
 
     ## Create quotes table if none exists
     self.cur.execute("""
-    CREATE TABLE IF NOT EXISTS inventory (
-        vin TEXT NOT NULL,
-        title TEXT,
-        year INTEGER,
-        make TEXT,
-        model TEXT,
-        trim TEXT,
-        model_trim TEXT,
-        price REAL,
-        mileage INTEGER,
-        vehicle_type TEXT,
-        interior_color TEXT,
-        exterior_color TEXT,
-        transmission TEXT,
-        engine TEXT,
-        drivetrain TEXT,
-        dealership_name TEXT,
-        dealership_address TEXT,
-        dealership_zipcode TEXT,
-        dealership_city TEXT,
-        dealership_state TEXT,
-        scraped_url TEXT,
-        scraped_date TEXT
+    CREATE TABLE IF NOT EXISTS scraped_datasets.scraped_inventory_data.inventories (
+        vin varchar NOT NULL,
+        title varchar,
+        year integer,
+        make varchar,
+        model varchar,
+        trim varchar,
+        model_trim varchar,
+        price money,
+        mileage integer,
+        vehicle_type varchar,
+        interior_color varchar,
+        exterior_color varchar,
+        transmission varchar,
+        engine varchar,
+        drivetrain varchar,
+        dealership_name varchar,
+        dealership_address varchar,
+        dealership_zipcode varchar,
+        dealership_city varchar,
+        dealership_state varchar,
+        scraped_url varchar,
+        scraped_date timestamp
     )
     """)
 
@@ -43,7 +44,7 @@ class DealershipsScraperPipeline:
     beg_month = datetime.date(curr_date.year, curr_date.month, 1).strftime("%Y-%m-%d")
 
     ## Check to see if text is already in database
-    self.cur.execute("select * from inventory where vin = ? and DATE(scraped_date, 'start of month') = ?", (item['vin'], beg_month, ))
+    self.cur.execute("select * from scraped_inventory_data.inventories where vin = %s and date_trunc('month', scraped_date) = %s", (item['vin'], beg_month))
     result = self.cur.fetchone()
 
     ## If it is in DB, create log message
@@ -51,14 +52,14 @@ class DealershipsScraperPipeline:
       spider.logger.warn("Item already in database: %s" % item['vin'])
     else:
       self.cur.execute("""
-          INSERT INTO inventory
+          INSERT INTO scraped_inventory_data.inventories
             (vin, title, year, make, model
             , trim, model_trim, price, mileage
             , vehicle_type, interior_color, exterior_color
             , transmission, engine, drivetrain, dealership_name
             , dealership_address, dealership_zipcode, dealership_city
             , dealership_state, scraped_url, scraped_date)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
       """,
       (
           item['vin'], item['title'], item['year'], item['make'], item['model']
