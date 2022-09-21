@@ -35,7 +35,9 @@ class DealershipsScraperPipeline:
         dealership_city varchar,
         dealership_state varchar,
         scraped_url varchar,
-        scraped_date timestamp
+        scraped_date timestamp,
+        scraped_month date not null,
+        CONSTRAINT inventories_pk PRIMARY KEY (vin, scraped_month)
     )
     """)
 
@@ -58,8 +60,8 @@ class DealershipsScraperPipeline:
             , vehicle_type, interior_color, exterior_color
             , transmission, engine, drivetrain, dealership_name
             , dealership_address, dealership_zipcode, dealership_city
-            , dealership_state, scraped_url, scraped_date)
-          VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            , dealership_state, scraped_url, scraped_date, scraped_month)
+          VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
       """,
       (
           item['vin'], item['title'], item['year'], item['make'], item['model']
@@ -68,7 +70,7 @@ class DealershipsScraperPipeline:
           , item['transmission'], item['engine'], item['drivetrain']
           , item['dealership_name'], item['dealership_address'], item['dealership_zipcode']
           , item['dealership_city'], item['dealership_state'], item['scraped_url']
-          , item['scraped_date']
+          , item['scraped_date'], beg_month
       ))
 
       ## Execute insert of data into database
