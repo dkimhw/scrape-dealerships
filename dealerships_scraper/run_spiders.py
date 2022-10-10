@@ -12,7 +12,8 @@ import spiders.fafama_auto_sales_spider as fafama_auto_sales_spider
 import spiders.direct_auto_spider as direct_auto_spider
 import spiders.bostonyan_auto_group_spider as bostonyan_auto_group_spider
 import spiders.blasius_boston_spider as blasius_boston_spider
-
+import spiders.hillside_auto_outlet_spider as hillside_auto_outlet_spider
+import spiders.queens_auto_mall_spider as queens_auto_mall_spider
 
 def run_spider():
     process = CrawlerProcess(get_project_settings())
@@ -28,6 +29,8 @@ def run_spider():
       process.crawl(fafama_auto_sales_spider.FafamaAutoSalesSpider)
       process.crawl(direct_auto_spider.DirectAutoSpider)
       process.crawl(bostonyan_auto_group_spider.BostonyanAutoGroupSpider)
+      process.crawl(hillside_auto_outlet_spider.HillsideAutoOutletSpider)
+      process.crawl(queens_auto_mall_spider.QueensAutoMallSpider)
       process.start()
     except Exception as e:
       print(e)
