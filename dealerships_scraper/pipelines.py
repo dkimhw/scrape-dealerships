@@ -45,6 +45,7 @@ class DealershipsScraperPipeline:
     curr_date =  datetime.date.today()
     beg_month = datetime.date(curr_date.year, curr_date.month, 1).strftime("%Y-%m-%d")
 
+    print("Processing vin:", item['vin'])
     ## Check to see if text is already in database
     self.cur.execute("select * from scraped_inventory_data.inventories where vin = %s and date_trunc('month', scraped_date) = %s", (item['vin'], beg_month))
     result = self.cur.fetchone()
@@ -52,6 +53,7 @@ class DealershipsScraperPipeline:
     ## If it is in DB, create log message
     if result:
       spider.logger.warn("Item already in database: %s" % item['vin'])
+      print("Item already in database: %s" % item['vin'])
     else:
       self.cur.execute("""
           INSERT INTO scraped_inventory_data.inventories
@@ -72,6 +74,7 @@ class DealershipsScraperPipeline:
           , item['dealership_city'], item['dealership_state'], item['scraped_url']
           , item['scraped_date'], beg_month
       ))
+      print("Item added to database: %s" % item['vin'])
 
       ## Execute insert of data into database
       self.con.commit()

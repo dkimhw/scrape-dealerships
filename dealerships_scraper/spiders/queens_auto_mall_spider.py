@@ -46,8 +46,9 @@ class QueensAutoMallSpider(scrapy.Spider):
 
     for link in links:
       url = f"https://www.queensauction.com{link}"
-      yield scrapy.Request(url, callback=self.parse_car)
       time.sleep(1.5)
+      yield scrapy.Request(url, callback=self.parse_car)
+
 
   def parse_car(self, response):
     item = items.Car()
@@ -81,4 +82,5 @@ class QueensAutoMallSpider(scrapy.Spider):
     item['scraped_url'] = response.url
     item['scraped_date'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
+    time.sleep(1.5)
     yield item

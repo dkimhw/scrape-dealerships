@@ -5,8 +5,17 @@ BOT_NAME = 'dealerships_scraper'
 SPIDER_MODULES = ['dealerships_scraper.spiders']
 NEWSPIDER_MODULE = 'dealerships_scraper.spiders'
 
+# Crawler settings
 RETRY_ENABLED = False
 COOKIES_ENABLED = False
+DOWNLOAD_DELAY = 0.5
+
+# Log settings
+LOG_ENABLED = True
+LOG_FILE = './errors.txt'
+LOG_FILE_APPEND = True
+LOG_LEVEL = 'ERROR'
+
 
 ITEM_PIPELINES = {
   'dealerships_scraper.pipelines.DealershipsScraperPipeline': 300,
