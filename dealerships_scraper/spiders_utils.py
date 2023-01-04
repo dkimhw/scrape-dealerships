@@ -7,10 +7,16 @@ def get_item_data_from_xpath(response, xpath, item, item_key, item_type, extract
       item_data = response.xpath(xpath).extract()[extract_key].strip()
       if item_type == 'int':
         item_data = re.sub('\D', '', item_data)
-        item_data = int(item_data)
+        if item_data == '':
+          item_data = 0
+        else:
+          item_data = int(item_data)
       elif item_type == 'float':
         item_data = re.sub('\D', '', item_data)
-        item_data = float(item_data)
+        if item_data == '':
+          item_data = 0.0
+        else:
+          item_data = float(item_data)
     except:
       pass
 
