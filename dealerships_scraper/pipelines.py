@@ -50,11 +50,13 @@ class DealershipsScraperPipeline:
     self.cur.execute("select * from scraped_inventory_data.inventories where vin = %s and date_trunc('month', scraped_date) = %s", (item['vin'], beg_month))
     result = self.cur.fetchone()
 
+    valid_data = (item['trim'] is not None and item['make'] is not None and item['model'] is not None and item['year'] is not None and item['price'] is not None and item['mileage'] is not None)
+
     ## If it is in DB, create log message
     if result:
       spider.logger.warn("Item already in database: %s" % item['vin'])
       print("Item already in database: %s" % item['vin'])
-    else:
+    elif valid_data:
       self.cur.execute("""
           INSERT INTO scraped_inventory_data.inventories
             (vin, title, year, make, model
@@ -75,7 +77,9 @@ class DealershipsScraperPipeline:
           , item['scraped_date'], beg_month
       ))
       print("Item added to database: %s" % item['vin'])
-
       ## Execute insert of data into database
       self.con.commit()
+    else:
+      print("Incomplete data - skipping item")
+
     return item

@@ -26,7 +26,7 @@ class AvonAutoBrokersSpider(scrapy.Spider):
   }
 
   def parse(self, response):
-    selectors = response.xpath("//div[@class='i11r-vehicle']")
+    selectors = response.xpath("//div[@class='i11r-vehicle infinite-scroll-current-page']")
 
     if len(selectors) == 0:
       return
@@ -56,7 +56,7 @@ class AvonAutoBrokersSpider(scrapy.Spider):
     model_trim = str(item['model']) + ' ' + str(item['trim'])
     item['model_trim'] = model_trim
 
-    get_item_data_from_xpath(response, ".//div[@class='internetWrap pricebox-2 hide-grid-price']/span[@class='price-2']/text()", item, 'price', 'float')
+    get_item_data_from_xpath(response, ".//div[@class='retailWrap pricebox-2 hide-grid-price']/span[@class='price-2']/text()", item, 'price', 'float')
     get_item_data_from_xpath(response, ".//div[@class='col-md-6']/p[@class='i11r_optMileage']/text()", item, 'mileage', 'int', 1)
 
     get_item_data_from_xpath(response, ".//div[@class='col-md-6']/p[@class='i11r_optEngine2']/text()", item, 'engine', 'str', 1)
