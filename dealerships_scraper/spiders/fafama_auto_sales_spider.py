@@ -25,9 +25,12 @@ class FafamaAutoSalesSpider(scrapy.Spider):
 
 
   def parse(self, response):
-    links = response.xpath("//h2[@class='color m-0 ebiz-vdp-title']/a/@href").extract()
+    links = response.xpath("//div[@class='srp-card-header']/a/@href").extract()
+
+    print(links)
 
     if len(links) == 0:
+      print(f"No links were found in {self.name} spider")
       return
 
     for link in links:
@@ -44,7 +47,6 @@ class FafamaAutoSalesSpider(scrapy.Spider):
 
   def parse_car(self, response):
     item = items.Car()
-
 
     year_make_model = response.xpath(".//h1[@class='ebiz-vdp-title color m-0']/text()").extract()[0].strip()
     year, make, model = get_car_make_model(year_make_model)
@@ -63,7 +65,7 @@ class FafamaAutoSalesSpider(scrapy.Spider):
     get_item_data_from_xpath(response, ".//tr[@class='engine-row']/td[@class='tright']/text()", item, 'engine', 'str')
     get_item_data_from_xpath(response, ".//tr[@class='int-color-row']/td[@class='tright']/text()", item, 'interior_color', 'str')
     get_item_data_from_xpath(response, ".//tr[@class='ext-color-row']/td[@class='tright']/text()", item, 'exterior_color', 'str')
-    get_item_data_from_xpath(response, ".//tr[@class='drivetrain-row']/td[@class='tright']/text()", item, 'drivetrain', 'str')
+    get_item_data_from_xpath(response, ".//tr[@class='drivetrain-row']/td[@class='tleft']/text()", item, 'drivetrain', 'str')
 
     trim_data = response.xpath(".//span[@class='ebiz-vdp-subtitle h3 body-color d-block m-0']/text()").get()
     if trim_data != None:

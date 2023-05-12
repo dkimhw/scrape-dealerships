@@ -499,3 +499,29 @@ Traceback (most recent call last):
   File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
     return (yield download_func(request=request, spider=spider))
 twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-05-12 17:24:13 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.streamautooutlet.com/vehicle-details/used-2019-bmw-x5-xdrive40i-5UXCR6C50KLL53805>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/twisted/internet/defer.py", line 1656, in _inlineCallbacks
+    result = current_context.run(
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/twisted/python/failure.py", line 514, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/twisted/internet/defer.py", line 857, in _runCallbacks
+    current.result = callback(  # type: ignore[misc]
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/handlers/http11.py", line 360, in _cb_timeout
+    raise TimeoutError(f"Getting {url} took longer than {timeout} seconds.")
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting https://www.streamautooutlet.com/vehicle-details/used-2019-bmw-x5-xdrive40i-5UXCR6C50KLL53805 took longer than 180.0 seconds..
+2023-05-12 17:26:40 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.streamautooutlet.com/vehicle-details/used-2008-honda-civic-sdn-sedan-lx-2HGFA16508H346946>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/twisted/internet/defer.py", line 1656, in _inlineCallbacks
+    result = current_context.run(
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/twisted/python/failure.py", line 514, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/twisted/internet/defer.py", line 857, in _runCallbacks
+    current.result = callback(  # type: ignore[misc]
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/handlers/http11.py", line 360, in _cb_timeout
+    raise TimeoutError(f"Getting {url} took longer than {timeout} seconds.")
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting https://www.streamautooutlet.com/vehicle-details/used-2008-honda-civic-sdn-sedan-lx-2HGFA16508H346946 took longer than 180.0 seconds..
