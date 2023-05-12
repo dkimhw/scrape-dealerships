@@ -1,0 +1,501 @@
+2023-02-06 20:17:59 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2019-chevrolet-malibu-ls-holliston-ma-id-50438908>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:18:39 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2018-gmc-yukon-sle-holliston-ma-id-49976642>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:19:22 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2016-subaru-legacy-3-6r-holliston-ma-id-47041603>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:25:39 [scrapy.core.scraper] ERROR: Spider error processing <GET https://www.irwinzone.com/searchused.aspx?pn=50&pt=5> (referer: https://www.irwinzone.com/searchused.aspx?pn=50&pt=4)
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/defer.py", line 132, in iter_errback
+    yield next(it)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/python.py", line 354, in __next__
+    return next(self.data)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/python.py", line 354, in __next__
+    return next(self.data)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/referer.py", line 342, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/urllength.py", line 40, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/Documents/main-projects/scrape-dealerships/dealerships_scraper/spiders/irwin_auto_group_spider.py", line 29, in parse
+    next_page = response.xpath("//a[@class='stat-arrow-next']/@href").extract()[0]
+IndexError: list index out of range
+2023-02-06 20:37:55 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2021-porsche-taycan-turbo-s-richmond-hill-ny-id-46527972>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:37:58 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2021-mercedes-benz-cls-amg-cls-53-richmond-hill-ny-id-46527963>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:38:05 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2021-toyota-rav4-xle-richmond-hill-ny-id-47864379>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-02-06 20:38:05 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2021-nissan-versa-s-richmond-hill-ny-id-47425677>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:38:47 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2021-kia-soul-ex-richmond-hill-ny-id-50722891>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:38:48 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2021-acura-rdx-w/a-spec-package-richmond-hill-ny-id-50571293>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:38:57 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2021-toyota-corolla-nightshade-richmond-hill-ny-id-49371787>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:39:29 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2020-nissan-altima-2-5-sr-richmond-hill-ny-id-48413237>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:39:31 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2020-acura-rdx-w/technology-pkg-richmond-hill-ny-id-48798223>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:39:52 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2020-chrysler-pacifica-touring-l-richmond-hill-ny-id-49330011>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-02-06 20:39:54 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2020-chrysler-pacifica-hybrid-limited-richmond-hill-ny-id-49495809>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-02-06 20:39:58 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2020-jeep-cherokee-limited-richmond-hill-ny-id-49542413>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:40:00 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2020-jeep-grand-cherokee-limited-richmond-hill-ny-id-49758490>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:40:17 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2020-tesla-model-3-long-range-richmond-hill-ny-id-50405828>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:40:19 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2020-acura-ilx-w/premium-pkg-richmond-hill-ny-id-49882080>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:40:40 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-bmw-x3-xdrive30i-richmond-hill-ny-id-46527844>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-02-06 20:40:41 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-bmw-x3-xdrive30i-richmond-hill-ny-id-46527852>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-02-06 20:40:46 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-bmw-x3-xdrive30i-richmond-hill-ny-id-46527853>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:40:47 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-infiniti-qx50-essential-richmond-hill-ny-id-46527854>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:41:03 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-land-rover-discovery-sport-hse-richmond-hill-ny-id-46527931>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:41:05 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-nissan-sentra-s-richmond-hill-ny-id-46527917>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:41:26 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-nissan-sentra-sv-richmond-hill-ny-id-46871270>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-02-06 20:41:27 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-bmw-x6-xdrive35i-richmond-hill-ny-id-46977216>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-02-06 20:41:32 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-hyundai-elantra-se-richmond-hill-ny-id-47182940>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:41:33 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-chevrolet-malibu-lt-richmond-hill-ny-id-47182942>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:41:46 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-hyundai-sonata-se-richmond-hill-ny-id-47971871>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:41:47 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-bmw-x3-xdrive30i-richmond-hill-ny-id-47786614>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:41:54 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-kia-optima-lx-richmond-hill-ny-id-47803921>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:42:10 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-nissan-sentra-sv-richmond-hill-ny-id-47391649>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-02-06 20:42:12 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-honda-civic-sedan-sport-richmond-hill-ny-id-47786519>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-02-06 20:42:16 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-kia-optima-lx-richmond-hill-ny-id-47786616>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:42:18 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-mercedes-benz-c-class-c-300-richmond-hill-ny-id-48314118>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:42:30 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-mercedes-benz-glc-glc-300-richmond-hill-ny-id-49004879>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:42:32 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-bmw-3-series-330i-xdrive-richmond-hill-ny-id-49004921>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:42:40 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-mazda-cx-5-touring-richmond-hill-ny-id-48911228>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:42:54 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-mercedes-benz-c-class-c-300-richmond-hill-ny-id-48535360>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-02-06 20:42:56 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-chevrolet-equinox-lt-richmond-hill-ny-id-49329808>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-02-06 20:43:00 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-honda-cr-v-ex-l-richmond-hill-ny-id-49882079>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:43:02 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-ford-f-150-xlt-richmond-hill-ny-id-50009241>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:43:19 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-tesla-model-3-long-range-richmond-hill-ny-id-50484455>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:43:21 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-mercedes-benz-gls-gls-450-richmond-hill-ny-id-50312602>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:43:42 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-honda-odyssey-ex-l-richmond-hill-ny-id-49329805>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-02-06 20:43:46 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-bmw-x3-xdrive30i-richmond-hill-ny-id-50811948>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:43:48 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2018-land-rover-range-rover-sport-dynamic-richmond-hill-ny-id-46527876>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:44:04 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2018-nissan-maxima-sv-richmond-hill-ny-id-49329814>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:44:05 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2018-nissan-sentra-nismo-richmond-hill-ny-id-48632587>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:44:26 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2018-mercedes-benz-c-class-c-300-richmond-hill-ny-id-47975978>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-02-06 20:44:28 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2018-honda-cr-v-touring-richmond-hill-ny-id-50065084>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-02-06 20:44:33 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2018-audi-a6-premium-plus-richmond-hill-ny-id-50280033>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:44:34 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2018-mercedes-benz-glc-glc-300-richmond-hill-ny-id-50405830>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:44:48 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2017-audi-a4-premium-richmond-hill-ny-id-49542412>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:44:50 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2017-nissan-altima-2-5-sv-richmond-hill-ny-id-47867261>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:44:55 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2017-lexus-es-350-richmond-hill-ny-id-48593888>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:45:08 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2018-kia-stinger-premium-richmond-hill-ny-id-50658848>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-02-06 20:45:09 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2017-audi-a6-premium-richmond-hill-ny-id-50444595>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-02-06 20:45:14 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2017-bmw-x4-xdrive28i-richmond-hill-ny-id-50444596>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:45:15 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2017-mercedes-benz-glc-amg-glc-43-richmond-hill-ny-id-50658834>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:45:31 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2016-mercedes-benz-gl-gl-450-richmond-hill-ny-id-50279984>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:45:33 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2016-toyota-rav4-hybrid-limited-richmond-hill-ny-id-49791391>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-02-06 20:45:47 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2017-mercedes-benz-gle-gle-350-richmond-hill-ny-id-50767630>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-02-06 20:45:47 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2017-ford-f-150-limited-richmond-hill-ny-id-50763789>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-03-03 15:47:41 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2017-cadillac-ct6-3-6l-premium-luxury-holliston-ma-id-49078273>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-03-03 15:48:20 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2019-infiniti-qx60-luxe-holliston-ma-id-49356675>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-03-03 15:51:48 [scrapy.core.scraper] ERROR: Spider error processing <GET https://www.irwinzone.com/searchused.aspx?pn=50&pt=4> (referer: https://www.irwinzone.com/searchused.aspx?pn=50&pt=3)
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/defer.py", line 132, in iter_errback
+    yield next(it)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/python.py", line 354, in __next__
+    return next(self.data)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/python.py", line 354, in __next__
+    return next(self.data)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/referer.py", line 342, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/urllength.py", line 40, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/Documents/main-projects/scrape-dealerships/dealerships_scraper/spiders/irwin_auto_group_spider.py", line 29, in parse
+    next_page = response.xpath("//a[@class='stat-arrow-next']/@href").extract()[0]
+IndexError: list index out of range
+2023-03-03 16:01:40 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2016-mini-cooper-hardtop-4-door--richmond-hill-ny-id-50983291>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-04-06 00:27:09 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2016-buick-cascada-premium-holliston-ma-id-49269974>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-04-06 00:27:49 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2021-honda-civic-ex-holliston-ma-id-51285782>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-04-06 00:31:48 [scrapy.core.scraper] ERROR: Spider error processing <GET https://www.irwinzone.com/searchused.aspx?pn=50&pt=4> (referer: https://www.irwinzone.com/searchused.aspx?pn=50&pt=3)
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/defer.py", line 132, in iter_errback
+    yield next(it)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/python.py", line 354, in __next__
+    return next(self.data)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/python.py", line 354, in __next__
+    return next(self.data)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/referer.py", line 342, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/urllength.py", line 40, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/Documents/main-projects/scrape-dealerships/dealerships_scraper/spiders/irwin_auto_group_spider.py", line 29, in parse
+    next_page = response.xpath("//a[@class='stat-arrow-next']/@href").extract()[0]
+IndexError: list index out of range
+2023-04-06 00:41:00 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-hyundai-ioniq-hybrid-blue-richmond-hill-ny-id-49792909>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-04-06 00:41:07 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2016-mitsubishi-outlander-sport-2-0-es-richmond-hill-ny-id-51246423>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-04-06 00:46:22 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2019-bmw-x6-xdrive35i-richmond-hill-ny-id-46527863>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-05-12 02:23:54 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2020-chevrolet-traverse-3lt-holliston-ma-id-50626634>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-05-12 02:24:32 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2015-honda-cr-v-ex-holliston-ma-id-51948840>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-05-12 02:29:06 [scrapy.core.scraper] ERROR: Spider error processing <GET https://www.irwinzone.com/searchused.aspx?pn=50&pt=5> (referer: https://www.irwinzone.com/searchused.aspx?pn=50&pt=4)
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/defer.py", line 132, in iter_errback
+    yield next(it)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/python.py", line 354, in __next__
+    return next(self.data)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/python.py", line 354, in __next__
+    return next(self.data)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/referer.py", line 342, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/urllength.py", line 40, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/Documents/main-projects/scrape-dealerships/dealerships_scraper/spiders/irwin_auto_group_spider.py", line 29, in parse
+    next_page = response.xpath("//a[@class='stat-arrow-next']/@href").extract()[0]
+IndexError: list index out of range
+2023-05-12 02:35:38 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2015-kia-soul--richmond-hill-ny-id-51289039>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-05-12 02:35:41 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2018-nissan-altima-2-5-s-richmond-hill-ny-id-51932466>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-05-12 02:35:58 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2017-nissan-altima-2-5-s-richmond-hill-ny-id-51979899>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]

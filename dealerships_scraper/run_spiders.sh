@@ -11,3 +11,4 @@ scrapy crawl newton_auto_sales
 scrapy crawl stream_auto_outlet
 scrapy crawl hillside_auto_outlet
 scrapy crawl queens_auto_mall
+pytest tests

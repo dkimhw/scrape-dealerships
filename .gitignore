@@ -6,6 +6,7 @@ __pycache__
 explore_cars_test_db.ipynb
 .python-version
 /database/backup.sql
+.pytest_cache
 
 # Ignore dynaconf secret files
 .secrets.*
