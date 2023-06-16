@@ -54,7 +54,7 @@ class BlasiusBostonSpider(scrapy.Spider):
     item['model_trim'] = str(item['model']) + ' ' + str(item['trim'])
 
     get_item_data_from_xpath(response, ".//li[@class='specification-item']/span[preceding-sibling::span[./strong/text()[contains(.,'Mileage:')]]]/text()", item, 'mileage', 'int')
-    get_item_data_from_xpath(response, "//span[@class='starting-price-value ']/text()", item, 'price', 'int')
+    get_item_data_from_xpath(response, "//span[@class='starting-price-value strikethrough']/text()", item, 'price', 'int')
 
     get_item_data_from_xpath(response, ".//li[@class='specification-item']/span[preceding-sibling::span[./strong/text()[contains(.,'Transmission:')]]]/text()", item, 'transmission', 'str')
     get_item_data_from_xpath(response, ".//li[@class='specification-item']/span[preceding-sibling::span[./strong/text()[contains(.,'VIN #:')]]]/text()", item, 'vin', 'str')

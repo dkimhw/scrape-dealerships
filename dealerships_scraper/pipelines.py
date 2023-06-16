@@ -45,12 +45,14 @@ class DealershipsScraperPipeline:
     curr_date =  datetime.date.today()
     beg_month = datetime.date(curr_date.year, curr_date.month, 1).strftime("%Y-%m-%d")
 
-    print("Processing vin:", item['vin'])
+    print("Processing vin:", item['vin'], ' - ', item['dealership_name'])
     ## Check to see if text is already in database
     self.cur.execute("select * from scraped_inventory_data.inventories where vin = %s and date_trunc('month', scraped_date) = %s", (item['vin'], beg_month))
     result = self.cur.fetchone()
 
     valid_data = (item['trim'] is not None and item['make'] is not None and item['model'] is not None and item['year'] is not None and item['price'] is not None and item['mileage'] is not None)
+
+    print("item, ", item)
 
     ## If it is in DB, create log message
     if result:

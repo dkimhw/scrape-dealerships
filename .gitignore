@@ -7,6 +7,7 @@ explore_cars_test_db.ipynb
 .python-version
 /database/backup.sql
 .pytest_cache
+/dealerships_scraper/errors.txt
 
 # Ignore dynaconf secret files
 .secrets.*
