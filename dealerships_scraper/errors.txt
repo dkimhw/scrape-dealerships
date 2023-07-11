@@ -613,3 +613,38 @@ Traceback (most recent call last):
   File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
     return (yield download_func(request=request, spider=spider))
 twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-07-11 13:50:32 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2015-chevrolet-silverado-2500hd-work-truck-holliston-ma-id-51909690>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-07-11 13:50:39 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2019-chrysler-pacifica-touring-plus-holliston-ma-id-52123580>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-07-11 13:51:17 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2019-infiniti-q50-3-0t-luxe-holliston-ma-id-52441933>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-07-11 13:51:23 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2016-jeep-grand-cherokee-limited-holliston-ma-id-52276244>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-07-11 13:51:58 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2019-nissan-rogue-sl-holliston-ma-id-52581658>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-07-11 13:52:04 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2019-ram-1500-classic-express-holliston-ma-id-52285854>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-07-11 13:52:10 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2019-ram-2500-tradesman-holliston-ma-id-52725864>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
