@@ -26,9 +26,6 @@ class FafamaAutoSalesSpider(scrapy.Spider):
 
   def parse(self, response):
     links = response.xpath("//div[@class='srp-card-header']/a/@href").extract()
-
-    print(links)
-
     if len(links) == 0:
       print(f"No links were found in {self.name} spider")
       return

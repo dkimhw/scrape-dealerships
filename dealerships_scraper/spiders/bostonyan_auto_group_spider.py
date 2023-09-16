@@ -1,4 +1,4 @@
-
+import time
 import scrapy
 import datetime
 import os
@@ -25,31 +25,37 @@ class BostonyanAutoGroupSpider(scrapy.Spider):
 
   def parse(self, response):
     selectors = response.xpath("//div[@class='col- dynamic-col']")
+    # links = response.xpath("//div[@class='vehicle-label']/div/a/@href").extract()
+
+    # for link in links:
+    #   time.sleep(1)
+    #   yield scrapy.Request(link, callback=self.parse_car)
+
     for selector in selectors:
       yield from self.parse_car(selector, response.url)
 
   def parse_car(self, response, current_url):
     item = items.Car()
 
-    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel   palette-bg2 vehicle  lot-00']/@data-displayyear", item, 'year', 'int')
-    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel   palette-bg2 vehicle  lot-00']/@data-displaymake", item, 'make', 'str')
-    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel   palette-bg2 vehicle  lot-00']/@data-displaymodel", item, 'model', 'str')
-    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel   palette-bg2 vehicle  lot-00']/@data-displaytrim", item, 'trim', 'str')
+    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel  inv-fluid  palette-bg2 vehicle  lot-00']/@data-displayyear", item, 'year', 'int')
+    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel  inv-fluid  palette-bg2 vehicle  lot-00']/@data-displaymake", item, 'make', 'str')
+    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel  inv-fluid  palette-bg2 vehicle  lot-00']/@data-displaymodel", item, 'model', 'str')
+    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel  inv-fluid  palette-bg2 vehicle  lot-00']/@data-displaytrim", item, 'trim', 'str')
     item['title'] = str(item['year']) + ' ' + str(item['make']) + ' ' + str(item['model']) + ' ' + str(item['trim']) if item['trim'] != None else ''
     item['model_trim'] = str(item['model']) + ' ' + str(item['trim']) if item['trim'] != None else ''
 
     get_item_data_from_xpath(response, ".//div[@class='pricevalue1 accent-color1']/b/text()", item, 'price', 'int')
-    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel   palette-bg2 vehicle  lot-00']/@data-displaymileage", item, 'mileage', 'int')
+    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel  inv-fluid  palette-bg2 vehicle  lot-00']/@data-displaymileage", item, 'mileage', 'int')
 
-    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel   palette-bg2 vehicle  lot-00']/@data-displayintcolor", item, 'interior_color', 'str')
-    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel   palette-bg2 vehicle  lot-00']/@data-displayextcolor", item, 'exterior_color', 'str')
-    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel   palette-bg2 vehicle  lot-00']/@data-displayengine", item, 'engine', 'str')
-    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel   palette-bg2 vehicle  lot-00']/@data-displaytransmission", item, 'transmission', 'str')
-    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel   palette-bg2 vehicle  lot-00']/@data-displaydrivetrain", item, 'drivetrain', 'str')
-    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel   palette-bg2 vehicle  lot-00']/@data-displaydrivetrain", item, 'vehicle_type', 'str')
+    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel  inv-fluid  palette-bg2 vehicle  lot-00']/@data-displayintcolor", item, 'interior_color', 'str')
+    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel  inv-fluid  palette-bg2 vehicle  lot-00']/@data-displayextcolor", item, 'exterior_color', 'str')
+    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel  inv-fluid  palette-bg2 vehicle  lot-00']/@data-displayengine", item, 'engine', 'str')
+    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel  inv-fluid  palette-bg2 vehicle  lot-00']/@data-displaytransmission", item, 'transmission', 'str')
+    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel  inv-fluid  palette-bg2 vehicle  lot-00']/@data-displaydrivetrain", item, 'drivetrain', 'str')
+    get_item_data_from_xpath(response, ".//div[@class='clearfix inventory-panel  inv-fluid  palette-bg2 vehicle  lot-00']/@data-displaydrivetrain", item, 'vehicle_type', 'str')
     get_item_data_from_xpath(response, ".//span[@class='vin']/text()", item, 'vin', 'str')
 
-    title = response.xpath(".//div[@class='clearfix inventory-panel   palette-bg2 vehicle  lot-00']/@data-displaytitle").get()
+    title = response.xpath(".//div[@class='clearfix inventory-panel  inv-fluid  palette-bg2 vehicle  lot-00']/@data-displaytitle").get()
     if title != None:
       item['vehicle_type'] = get_vehicle_type(title)
 
