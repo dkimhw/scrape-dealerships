@@ -795,3 +795,163 @@ Traceback (most recent call last):
   File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
     return (yield download_func(request=request, spider=spider))
 twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-10-09 18:10:58 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2019-audi-a4-2-0t-premium-holliston-ma-id-53662553>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-10-09 18:12:57 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2018-lexus-es-350-holliston-ma-id-52748901>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-10-09 18:36:46 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2013-mercedes-benz-glk-class-glk-350-richmond-hill-ny-id-52677869>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-10-09 19:22:56 [scrapy.core.scraper] ERROR: Spider error processing <GET https://automecca.com/sale/used-cars-framingham-ma> (referer: None)
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/defer.py", line 132, in iter_errback
+    yield next(it)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/python.py", line 354, in __next__
+    return next(self.data)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/python.py", line 354, in __next__
+    return next(self.data)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/referer.py", line 342, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/urllength.py", line 40, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/Documents/main-projects/scrape-dealerships/dealerships_scraper/spiders/direct_auto_spider.py", line 42, in parse
+    curr_page = int(re.search('page-([0-9])+', response.url)[0].replace('page-', ''))
+TypeError: 'NoneType' object is not subscriptable
+2023-10-09 19:31:39 [scrapy.core.scraper] ERROR: Spider error processing <GET https://automecca.com/sale/used-cars-framingham-ma> (referer: None)
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/defer.py", line 132, in iter_errback
+    yield next(it)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/python.py", line 354, in __next__
+    return next(self.data)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/python.py", line 354, in __next__
+    return next(self.data)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/referer.py", line 342, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/urllength.py", line 40, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/Documents/main-projects/scrape-dealerships/dealerships_scraper/spiders/direct_auto_spider.py", line 42, in parse
+    curr_page = int(re.search('page-([0-9])+', response.url)[0].replace('page-', ''))
+TypeError: 'NoneType' object is not subscriptable
+2023-10-09 19:34:13 [scrapy.core.scraper] ERROR: Spider error processing <GET https://automecca.com/sale/used-cars-framingham-ma> (referer: None)
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/defer.py", line 132, in iter_errback
+    yield next(it)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/python.py", line 354, in __next__
+    return next(self.data)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/python.py", line 354, in __next__
+    return next(self.data)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/referer.py", line 342, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/urllength.py", line 40, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/Documents/main-projects/scrape-dealerships/dealerships_scraper/spiders/direct_auto_spider.py", line 42, in parse
+    curr_page = int(re.search('page-([0-9])+', response.url)[0].replace('page-', ''))
+TypeError: 'NoneType' object is not subscriptable
+2023-10-09 19:37:19 [scrapy.core.scraper] ERROR: Spider error processing <GET https://automecca.com/sale/used-cars-framingham-ma> (referer: None)
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/defer.py", line 132, in iter_errback
+    yield next(it)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/python.py", line 354, in __next__
+    return next(self.data)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/python.py", line 354, in __next__
+    return next(self.data)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/referer.py", line 342, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/urllength.py", line 40, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/Documents/main-projects/scrape-dealerships/dealerships_scraper/spiders/direct_auto_spider.py", line 44, in parse
+    curr_page = int(re.search('page-([0-9])+', response.url)[0].replace('page-', ''))
+TypeError: 'NoneType' object is not subscriptable
+2023-10-09 19:39:53 [scrapy.core.scraper] ERROR: Spider error processing <GET https://automecca.com/sale/used-cars-framingham-ma> (referer: None)
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/defer.py", line 132, in iter_errback
+    yield next(it)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/python.py", line 354, in __next__
+    return next(self.data)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/utils/python.py", line 354, in __next__
+    return next(self.data)
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/offsite.py", line 29, in process_spider_output
+    for x in result:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/referer.py", line 342, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/urllength.py", line 40, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/spidermw.py", line 66, in _evaluate_iterable
+    for r in iterable:
+  File "/Users/davidkim/Documents/main-projects/scrape-dealerships/dealerships_scraper/spiders/direct_auto_spider.py", line 44, in parse
+    curr_page = int(re.search('page-([0-9])+', response.url)[0].replace('page-', ''))
+TypeError: 'NoneType' object is not subscriptable

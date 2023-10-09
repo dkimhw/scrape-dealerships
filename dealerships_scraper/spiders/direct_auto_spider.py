@@ -12,8 +12,9 @@ class DirectAutoSpider(scrapy.Spider):
   name = "direct_auto"
   user_agent = 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'
   start_urls = [
-      'https://www.directautomecca.com/view-inventory.aspx?_page=1'
+      'https://automecca.com/sale/used-cars-framingham-ma/page-1'
   ]
+  pagination_url =  'https://automecca.com/sale/used-cars-framingham-ma/page-1'
 
   DEALERSHIP_INFO = {
     'dealership_name': 'Direct Auto Mecca',
@@ -23,47 +24,51 @@ class DirectAutoSpider(scrapy.Spider):
     'state': 'MA'
   }
 
+  # int(re.search('page-([0-9])+', 'https://automecca.com/sale/used-cars-framingham-ma/page-1')[0].replace('page-', ''))
+  # re.sub('page-([0-9])+', f'page={curr_page + 1}', 'https://automecca.com/sale/used-cars-framingham-ma/page-1')
 
   def parse(self, response):
-    links = response.xpath("//h2[@class='ebiz-vdp-title color m-0']/a/@href").extract()
+    links = response.xpath("//div[@class='veh-title-bar group']/h2/a/@href").extract()
     if len(links) == 0:
       return
 
-    for link in links:
+    vehicle_trims = response.xpath("//div[@class='veh-title-bar group']/h2/a/span[@class='title-item trim']/text()").extract()
+    for idx in range(len(links)):
       time.sleep(1)
-      url = f'https:{link}'
-      yield scrapy.Request(url, callback=self.parse_car)
+      url = f'https://automecca.com{links[idx]}'
+      trim = vehicle_trims[idx]
+      yield scrapy.Request(url, callback=self.parse_car, cb_kwargs=dict(trim=trim))
 
-    curr_page = int(re.search('page=([0-9])+', response.url)[0].replace('page=', ''))
-    next_page_url = re.sub('page=([0-9])+', f'page={curr_page + 1}', response.url)
+    curr_page = int(re.search('page-([0-9])+', self.pagination_url)[0].replace('page-', '')) if re.search('page-([0-9])+', self.pagination_url) else 1
+    self.pagination_url = re.sub('page-([0-9])+', f'page-{curr_page + 1}', self.pagination_url)
     yield scrapy.Request(
-      url=next_page_url,
+      url=self.pagination_url,
       callback=self.parse
     )
 
-  def parse_car(self, response):
+  def parse_car(self, response, trim):
     item = items.Car()
 
-    year_make_model = response.xpath(".//h1[@class='ebiz-vdp-title color m-0']/text()").extract()[0].strip()
-    year, make, model = get_car_make_model(year_make_model)
-    item['year'] = year if year != '' else None
-    item['make'] = make if make != '' else None
-    item['model'] = model if model != '' else None
-    get_item_data_from_xpath(response, ".//span[@class='ebiz-vdp-subtitle h3 body-color d-block m-0']/text()", item, 'trim', 'str')
+    get_item_data_from_xpath(response, "//div[@class='simpwebchat_inv_item']/@data-year", item, 'year', 'int', 0)
+    get_item_data_from_xpath(response, "//div[@class='simpwebchat_inv_item']/@data-make", item, 'make', 'str', 0)
+    get_item_data_from_xpath(response, "//div[@class='simpwebchat_inv_item']/@data-model", item, 'model', 'str', 0)
+    item['trim'] = trim.strip()
     item['title'] = str(item['year']) + ' ' + str(item['make']) + ' ' + str(item['model']) + ' ' + str(item['trim']) if item['trim'] != None else ''
     item['model_trim'] = str(item['model']) + ' ' + str(item['trim']) if item['trim'] != None else ''
 
-    get_item_data_from_xpath(response, ".//tr[@class='miles-row']/td[@class='tright']/text()", item, 'mileage', 'int')
-    get_item_data_from_xpath(response, ".//h2[@class='money-sign-disp body-font d-inline m-0']/text()", item, 'price', 'int')
+    get_item_data_from_xpath(response, "//div[@class='left-half-col']/dl/dd[preceding-sibling::dt/text()[contains(., 'Mileage:')]]/text()", item, 'mileage', 'int')
+    get_item_data_from_xpath(response, ".//div[@class='simpwebchat_inv_item']/@data-price", item, 'price', 'int')
 
-    get_item_data_from_xpath(response, ".//tr[@class='transmission-row']/td[@class='tright']/text()", item, 'transmission', 'str')
-    get_item_data_from_xpath(response, ".//tr[@class='vin-row']/td[@class='tright']/text()", item, 'vin', 'str')
-    get_item_data_from_xpath(response, ".//tr[@class='engine-row']/td[@class='tright']/text()", item, 'engine', 'str')
-    get_item_data_from_xpath(response, ".//tr[@class='int-color-row']/td[@class='tright']/text()", item, 'interior_color', 'str')
-    get_item_data_from_xpath(response, ".//tr[@class='ext-color-row']/td[@class='tright']/text()", item, 'exterior_color', 'str')
-    get_item_data_from_xpath(response, ".//tr[@class='drivetrain-row']/td[@class='tright']/text()", item, 'drivetrain', 'str')
+    get_item_data_from_xpath(response, "//div[@class='left-half-col']/dl/dd[preceding-sibling::dt/text()[contains(., 'Body:')]]/text()", item, 'vehicle_type', 'str')
+    get_item_data_from_xpath(response, "//div[@class='right-half-col']/dl/dd[preceding-sibling::dt/text()[contains(., 'Transmission:')]]/text()", item, 'transmission', 'str')
+    get_item_data_from_xpath(response, ".//div[@class='simpwebchat_inv_item']/@data-vin", item, 'vin', 'str')
+    get_item_data_from_xpath(response, "//div[@class='right-half-col']/dl/dd[preceding-sibling::dt/text()[contains(., 'Engine:')]]/text()", item, 'engine', 'str')
+    get_item_data_from_xpath(response, "//div[@class='left-half-col']/dl/dd[preceding-sibling::dt/text()[contains(., 'Interior:')]]/text()", item, 'interior_color', 'str')
+    get_item_data_from_xpath(response, "//div[@class='left-half-col']/dl/dd[preceding-sibling::dt/text()[contains(., 'Exterior:')]]/text()", item, 'exterior_color', 'str')
+    get_item_data_from_xpath(response, "//div[@class='left-half-col']/dl/dd[preceding-sibling::dt/text()[contains(., 'Drivetrain:')]]/text()", item, 'drivetrain', 'str')
 
-    item['vehicle_type'] = None
+    # response.xpath("//div[@class='left-half-col']/dl/dd[preceding-sibling::dt/text()[contains(., 'Drivetrain:')]]/text()").extract()
+    # response.xpath("//div[@class='left-half-col']/dl/dd/text()").extract()
 
     item['dealership_name'] = self.DEALERSHIP_INFO['dealership_name']
     item['dealership_address'] = self.DEALERSHIP_INFO['address']

@@ -12,13 +12,15 @@ import items
 
 class StreamAutoOutletSpider(scrapy.Spider):
   name = "stream_auto_outlet"
+
+  # scrapy shell 'https://www.streamautooutlet.com/used-vehicles/?_p=0'
+  # https://stackoverflow.com/questions/33247662/how-to-bypass-cloudflare-bot-ddos-protection-in-scrapy
   user_agent = 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36'
   start_urls = [
-      'https://www.streamautooutlet.com/inventory?type=used',
+      'https://www.streamautooutlet.com/used-vehicles/?_p=0',
   ]
 
   DEALERSHIP_INFO = {
-    'pagination_url': 'https://www.streamautooutlet.com/inventory?type=used&pg=2',
     'vehicle_detail_url': 'https://www.streamautooutlet.com/vehicle-details',
     'dealership_name': 'Stream Auto Outlet',
     'address': '324 W Merrick Rd',
@@ -34,7 +36,7 @@ class StreamAutoOutletSpider(scrapy.Spider):
       time.sleep(1)
       yield scrapy.Request(url, callback=self.parse_car)
 
-    next_page = response.xpath("//ul[@class='pagination']/li[@class='arrow']/a/@href").extract()
+    next_page = response.xpath("//a[@class='go-to-page']/@href").extract()
 
     # Additional layer of logic required to correctly retrieve the next url:
     if next_page:
@@ -46,7 +48,7 @@ class StreamAutoOutletSpider(scrapy.Spider):
       next_page = None
     print("Next Page: ", next_page)
     if next_page:
-      next_page_url = f"https://www.streamautooutlet.com{next_page}"
+      next_page_url = f"https://www.streamautooutlet.com/used-vehicles/?_p={next_page}"
       yield scrapy.Request(
           url=next_page_url,
           callback=self.parse
