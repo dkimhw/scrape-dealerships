@@ -10,13 +10,14 @@ sys.path.append(os.path.abspath(os.path.dirname('dealerships_scraper')))
 import items
 from spiders_utils import get_item_data_from_xpath
 
-
+# scrapy shell 'https://johnsautosales.com/newandusedcars?page=1'
 class JohnsAutoGroupSpider(scrapy.Spider):
   name = "johns_auto_group"
   start_urls = [
       'https://johnsautosales.com/newandusedcars?page=1'
   ]
 
+  USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36'
   DEALERSHIP_INFO = {
     'dealership_name': "Johns Auto Sales",
     'address': '181 Somerville Avenue',

@@ -955,3 +955,53 @@ Traceback (most recent call last):
   File "/Users/davidkim/Documents/main-projects/scrape-dealerships/dealerships_scraper/spiders/direct_auto_spider.py", line 44, in parse
     curr_page = int(re.search('page-([0-9])+', response.url)[0].replace('page-', ''))
 TypeError: 'NoneType' object is not subscriptable
+2023-11-21 02:00:16 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2014-acura-tl-sh-awd-holliston-ma-id-54560898>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-11-21 02:00:22 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2020-audi-s3-2-0t-premium-plus-holliston-ma-id-52586393>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-11-21 02:00:23 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2020-audi-a4-45-premium-holliston-ma-id-52725858>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-11-21 02:00:34 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2021-chevrolet-silverado-1500-rst-holliston-ma-id-52322983>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-11-21 02:01:13 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2015-ford-focus-se-holliston-ma-id-54391833>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-11-21 02:01:20 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2011-honda-fit-base-holliston-ma-id-54222037>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-11-21 02:02:08 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2014-nissan-pathfinder-sl-holliston-ma-id-54305834>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-11-21 02:02:19 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.blasiusboston.com/vehicle-details/used-2020-subaru-forester-sport-holliston-ma-id-54391824>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
+2023-11-21 02:27:05 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2015-toyota-corolla-s-plus-richmond-hill-ny-id-53849958>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure twisted.internet.error.ConnectionDone: Connection was closed cleanly.>]
+2023-11-21 02:27:21 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.queensauction.com/vehicle-details/used-2014-chrysler-300-300s-richmond-hill-ny-id-52359605>
+Traceback (most recent call last):
+  File "/Users/davidkim/.pyenv/versions/3.10.4/envs/dash/lib/python3.10/site-packages/scrapy/core/downloader/middleware.py", line 49, in process_request
+    return (yield download_func(request=request, spider=spider))
+twisted.web._newclient.ResponseNeverReceived: [<twisted.python.failure.Failure OpenSSL.SSL.Error: [('SSL routines', '', 'unexpected eof while reading')]>]
