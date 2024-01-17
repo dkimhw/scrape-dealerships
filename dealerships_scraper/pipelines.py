@@ -13,7 +13,7 @@ class DealershipsScraperPipeline:
 
     ## Create quotes table if none exists
     self.cur.execute("""
-    CREATE TABLE IF NOT EXISTS scraped_datasets.scraped_inventory_data.inventories (
+    CREATE TABLE IF NOT EXISTS scraped_datasets.inventory.cars (
         vin varchar NOT NULL,
         title varchar,
         year integer,
@@ -47,7 +47,7 @@ class DealershipsScraperPipeline:
 
     print("Processing vin:", item['vin'], ' - ', item['dealership_name'])
     ## Check to see if text is already in database
-    self.cur.execute("select * from scraped_inventory_data.inventories where vin = %s and date_trunc('month', scraped_date) = %s", (item['vin'], beg_month))
+    self.cur.execute("select * from scraped_datasets.inventory.cars  where vin = %s and date_trunc('month', scraped_date) = %s", (item['vin'], beg_month))
     result = self.cur.fetchone()
 
     valid_data = (item['trim'] is not None and item['make'] is not None and item['model'] is not None and item['year'] is not None and item['price'] is not None and item['mileage'] is not None)
@@ -60,7 +60,7 @@ class DealershipsScraperPipeline:
       print("Item already in database: %s" % item['vin'])
     elif valid_data:
       self.cur.execute("""
-          INSERT INTO scraped_inventory_data.inventories
+          INSERT INTO scraped_datasets.inventory.cars
             (vin, title, year, make, model
             , trim, model_trim, price, mileage
             , vehicle_type, interior_color, exterior_color

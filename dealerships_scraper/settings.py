@@ -1,6 +1,4 @@
 # Scrapy settings for dealerships_scraper project
-from shutil import which
-
 BOT_NAME = 'dealerships_scraper'
 
 SPIDER_MODULES = ['dealerships_scraper.spiders']
@@ -9,19 +7,6 @@ NEWSPIDER_MODULE = 'dealerships_scraper.spiders'
 DEFAULT_REQUEST_HEADERS = {
     'cookie': 'prov=4568ad3a-2c02-1686-b062-b26204fd5a6a; usr=p=%5b10%7c15%5d%5b160%7c%3bNewest%3b%5d',
     'referer': 'https://www.google.com/',
-    # Add more custom headers as needed
-}
-
-# Selenium settings
-# SELENIUM_DRIVER_NAME = 'chrome'
-# SELENIUM_DRIVER_EXECUTABLE_PATH = which('chromedriver')
-# SELENIUM_DRIVER_ARGUMENTS=['--headless']
-SELENIUM_DRIVER_NAME = 'firefox'
-SELENIUM_DRIVER_EXECUTABLE_PATH = which('geckodriver')
-SELENIUM_DRIVER_ARGUMENTS=['--headless']
-
-DOWNLOADER_MIDDLEWARES = {
-  'scrapy_selenium.SeleniumMiddleware': 800
 }
 
 # Crawler settings
@@ -34,7 +19,6 @@ LOG_ENABLED = True
 LOG_FILE = './errors.txt'
 LOG_FILE_APPEND = True
 LOG_LEVEL = 'ERROR'
-
 
 ITEM_PIPELINES = {
   'dealerships_scraper.pipelines.DealershipsScraperPipeline': 300,
